@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GreenLife</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<header>GreenLife Logo</header>
+
+<nav>
+<ul>
+<li><%= link_to 'Home', root_path %></li>
+<li><%= link_to 'Articles',articles_path %></li>
+<li><%= link_to 'Discusions',discusions_path %></li>
+<li><%= link_to 'About Us',about_path %></li>
+</ul>
+</nav>
+
+<section>Welcome Guest, Log In/Sign Up</section>
+
+<br />
+
+<body>
+
+<%= yield %>
+
+</body>
+<br />
+<footer>Copyright bla</footer>
+
+</html>
