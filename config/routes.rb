@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -7,7 +8,9 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about', to:'pages#about'
   get 'discusions', to:'pages#discusions'
-  get 'articles', to:'pages#articles'
+  get 'signup', to: 'users#new'
+  post 'users', to: 'users#create'
+  #get 'articles', to:'pages#articles'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -16,7 +19,8 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  resources :articles
+  resources :users, except: [:new]
   # Example resource route with options:
   #   resources :products do
   #     member do
@@ -37,8 +41,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end
