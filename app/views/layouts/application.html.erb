@@ -15,10 +15,16 @@
 <li><%= link_to 'Articles',articles_path %></li>
 <li><%= link_to 'Discusions',discusions_path %></li>
 <li><%= link_to 'About Us',about_path %></li>
+<% if current_user.try(:admin?) && logged_in? %>
+<li><%= link_to "Users", users_path %></li>
+<% end %>
 </ul>
 </nav>
-
-<section>Welcome Guest, Log In/Sign Up</section>
+<% if logged_in? %>
+<section>Welcome <%= current_user.username %>, <%= link_to 'Log out', logout_path, method: :destroy %></section>
+<% else %>
+<section>Welcome Guest, <%= link_to "Log In", login_path%>/<%= link_to "Sign up", signup_path%></section>
+<% end %>
 
 <br />
 

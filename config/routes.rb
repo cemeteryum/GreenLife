@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   get 'discusions', to:'pages#discusions'
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  get 'logout', to: 'sessions#destroy'
+  post 'logout', to: 'sessions#destroy'
   #get 'articles', to:'pages#articles'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

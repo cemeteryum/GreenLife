@@ -1,5 +1,6 @@
-<h1>Listing all articles</h1>
-<%= link_to "Create new article", new_article_path %>
+<h1>Welcome to <%= @user.username %>'s page</h1>
+
+<h4><%=  @user.username %>'s articles</h4>
 <table>
   <tr><th>Title</th><th>Description</th></tr>
   <% @articles.each do |article| %>
