@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -6,7 +7,6 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root 'pages#home'
   get 'about', to:'pages#about'
-  get 'discusions', to:'pages#discusions'
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
   get 'login', to: 'sessions#new'
@@ -22,8 +22,13 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :articles
-  resources :users, except: [:new]
+  #resources :articles
+  resources :articles do
+    resources :comments
+  end
+  resources :users, except: [:new] do
+    resources :comments
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do

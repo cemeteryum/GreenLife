@@ -1,4 +1,39 @@
-<h1>Showing selected article</h1>
-<p>Title: <%= @article.title %></p>
-<p>Description: <%= @article.description %></p>
-<td><%= link_to "Edit", edit_article_path(@article) %></td>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @article.description %>
+</p>
+
+<h2>Comments</h2>
+<% @article.comments.each do |comment| %>
+  <p>
+    <b>Comment:</b>
+    <%= comment.body %> |
+    <% if logged_in? && (current_user == comment.user || current_user.admin?) %>
+    <%= link_to 'Destroy Comment', [comment.article, comment],
+               :confirm => 'Are you sure?',
+               :method => :delete %> |
+    <% end %>
+    <small><td>Created by: <%= comment.user.username %>, <%= time_ago_in_words(comment.created_at) %> ago, last updated: <%= time_ago_in_words(comment.updated_at) %> </td></small>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@article, @article.comments.build]) do |f| %>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
