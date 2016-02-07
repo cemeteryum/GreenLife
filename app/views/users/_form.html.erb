@@ -16,11 +16,15 @@
   </p>
   <p>
     <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.email_field :email %>
   </p>
   <p>
     <%= f.label :password %>
     <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation, "Confirmation" %>
+    <%= f.password_field :password_confirmation %>
   </p>
   <p><%= f.submit(@user.new_record? ? "Sign up" : "Update account") %></p>
 

@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Your account has been updated sucessfully"
       redirect_to @user
@@ -37,7 +37,8 @@ class UsersController < ApplicationController
   end
   
   def show
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
+    #@user = User.find_by(username: params[:username])
     @articles = Article.all.where(user_id: @user.id) #find_by(user_id: @user.id)
   end
   
@@ -49,6 +50,7 @@ class UsersController < ApplicationController
   
   def set_user
     @user = User.find(params[:id])
+    #@user = User.find_by(username: params[:username])
   end
   
   private
