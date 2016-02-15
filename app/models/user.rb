@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
-  has_many :articles, dependent: :destroy
-  has_many :posts, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :arts, dependent: :destroy
+  has_many :treats, dependent: :destroy
+  has_many :coms, dependent: :destroy
   before_save { self.email = email.downcase}
   validates :username, presence: true,
             uniqueness: {case_sensitive: false},
@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   end
   # Remembers a user in the database for use in persistent sessions.
   def remember
-  self.remember_token = User.new_token
+  remember_token = User.new_token
   update_attribute(:remember_digest, User.digest(remember_token))
   end
   # Returns true if the given token matches the digest.

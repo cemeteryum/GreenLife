@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @com.text %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @com.user %>
+</p>
+
+<p>
+  <strong>Art:</strong>
+  <%= @com.art %>
+</p>
+
+<%= link_to 'Edit', edit_com_path(@com) %> |
+<%= link_to 'Back', coms_path %>

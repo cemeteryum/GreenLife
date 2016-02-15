@@ -12,11 +12,13 @@
 <nav>
 <ul>
 <li><%= link_to 'Home', root_path %></li>
-<li><%= link_to 'Articles',articles_path %></li>
-<li><%= link_to 'Posts',posts_path %></li>
-<li><%= link_to 'About Us',about_path %></li>
-<% if current_user.try(:admin?) && logged_in? %>
+<li><%= link_to 'Articles',arts_path %></li>
+<li><%= link_to 'Hawaii Treats',treats_path %></li>
+<li><%= link_to 'Challenges',chals_path %></li>
+<% if current_user.try(:admin?) && logged_in?  %>
 <li><%= link_to "Users", users_path %></li>
+<li><%= link_to "Categories", cats_path %></li>
+<li><%= link_to "Tags", tags_path %></li>
 <% end %>
 </ul>
 </nav>

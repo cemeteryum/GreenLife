@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @art.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @art.description %>
+</p>
+
+<h2>Comments</h2>
+<% @art.coms.each do |com| %>
+  <p>
+    <b>Comment:</b>
+    <%= com.text %> |
+    <% if logged_in? && (current_user == com.user || current_user.admin?) %>
+    <%= link_to 'Destroy Comment', [com.art, com],
+               :confirm => 'Are you sure?',
+               :method => :delete %> |
+    <% end %>
+    <small><td>Created by: <%= com.user.username %>, <%= time_ago_in_words(com.created_at) %> ago, last updated: <%= time_ago_in_words(com.updated_at) %> </td></small>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_for([@art, @art.coms.build]) do |f| %>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_area :text %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Edit', edit_art_path(@art) %> |
+<%= link_to 'Back', arts_path %>

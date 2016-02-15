@@ -1,19 +1,24 @@
-<h1>Welcome to <%= @user.username %>'s page</h1>
+<p id="notice"><%= notice %></p>
 
-<h4><%=  @user.username %>'s articles</h4>
-<table>
-  <tr><th>Title</th><th>Description</th></tr>
-  <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.description %></td>
-    <td><%= link_to "Show", article_path(article) %></td>
-    <% if logged_in? && (current_user == article.user || current_user.admin?) %>
-    <td><%= link_to "Edit", edit_article_path(article) %></td>
-    <td><%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "Are you sure?"} %></td>
-    <% end %>
-    <small><td>Created by: <%= article.user.username %>, <%= time_ago_in_words(article.created_at) %> ago, last updated: <%= time_ago_in_words(article.updated_at) %> </td></small>
-    
-  </tr>
-  <% end %>
-</table>
+<p>
+  <strong>Fname:</strong>
+  <%= @user.fname %>
+</p>
+
+<p>
+  <strong>Lname:</strong>
+  <%= @user.lname %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

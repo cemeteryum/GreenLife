@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @treat.name %>
+</p>
+
+<p>
+  <strong>Md:</strong>
+  <%= @treat.md %>
+</p>
+
+<p>
+  <strong>Sym:</strong>
+  <%= @treat.sym %>
+</p>
+
+<p>
+  <strong>Reg:</strong>
+  <%= @treat.reg %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @treat.user %>
+</p>
+
+<p>
+  <strong>Cat:</strong>
+  <%= @treat.cat %>
+</p>
+
+<%= link_to 'Edit', edit_treat_path(@treat) %> |
+<%= link_to 'Back', treats_path %>

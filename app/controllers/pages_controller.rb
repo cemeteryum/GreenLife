@@ -1,11 +1,4 @@
 class PagesController < ApplicationController
-    
-    def home
-    end
-    def about
-    end
-    def articles
-    end
-    def discusions
-    end
+  def home
+  end
 end

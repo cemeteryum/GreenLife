@@ -1,0 +1,41 @@
+<%= form_for(@treat) do |f| %>
+  <% if @treat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@treat.errors.count, "error") %> prohibited this treat from being saved:</h2>
+
+      <ul>
+      <% @treat.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :md %><br>
+    <%= f.check_box :md %>
+  </div>
+  <div class="field">
+    <%= f.label :sym %><br>
+    <%= f.text_area :sym %>
+  </div>
+  <div class="field">
+    <%= f.label :reg %><br>
+    <%= f.text_area :reg %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cat_id %><br>
+    <%= f.text_field :cat_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

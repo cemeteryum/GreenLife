@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @chal.name %>
+</p>
+
+<p>
+  <strong>Reg:</strong>
+  <%= @chal.reg %>
+</p>
+
+<p>
+  <strong>Dur:</strong>
+  <%= @chal.dur %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @chal.user %>
+</p>
+
+<p>
+  <strong>Cat:</strong>
+  <%= @chal.cat %>
+</p>
+
+<%= link_to 'Edit', edit_chal_path(@chal) %> |
+<%= link_to 'Back', chals_path %>

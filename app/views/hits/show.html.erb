@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @hit.text %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @hit.user %>
+</p>
+
+<p>
+  <strong>Chal:</strong>
+  <%= @hit.chal %>
+</p>
+
+<%= link_to 'Edit', edit_hit_path(@hit) %> |
+<%= link_to 'Back', hits_path %>

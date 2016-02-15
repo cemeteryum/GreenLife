@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Coms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>User</th>
+      <th>Art</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coms.each do |com| %>
+      <tr>
+        <td><%= com.text %></td>
+        <td><%= com.user %></td>
+        <td><%= com.art %></td>
+        <td><%= link_to 'Show', com %></td>
+        <td><%= link_to 'Edit', edit_com_path(com) %></td>
+        <td><%= link_to 'Destroy', com, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Com', new_com_path %>

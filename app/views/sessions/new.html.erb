@@ -1,12 +1,18 @@
 <%= form_for(:session, url: login_path) do |f| %>
-<%= f.label :username %>
-<%= f.text_field :username %>
-<%= f.label :password %>
-<%= f.password_field :password %>
-<%= f.label :remember_me do %>
-<%= f.check_box :remember_me %>
-<span>Remember me on this computer</span>
+  <div class="field">
+    <%= f.label :username %><br>
+    <%= f.text_field :username %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <div class="checkbox">
+  <%= f.label :remember_me do %>
+  <%= f.check_box :remember_me %>
+  <span>Remember me on this computer</span>
+  <% end %>
+  </div>
+  <%= f.submit "Log in" %>
 <% end %>
-<%= f.submit "Log in" %>
-<% end %>
-<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+  <p>New user? <%= link_to "Sign up now!", signup_path %></p>

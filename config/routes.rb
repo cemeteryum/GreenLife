@@ -1,19 +1,31 @@
 Rails.application.routes.draw do
-  resources :posts
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-  # root 'welcome#index'
   root 'pages#home'
-  get 'about', to:'pages#about'
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
   post 'logout', to: 'sessions#destroy'
-  #get 'articles', to:'pages#articles'
+  resources :hits
+  resources :chals
+  resources :treats
+  resources :treats
+  #resources :coms
+  resources :arts do
+    resources :coms
+  end
+  resources :tags
+  resources :cats
+  resources :users do
+    resources :comments
+    resources :arts
+  end
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
+  # You can have the root of your site routed with "root"
+  # root 'welcome#index'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -22,13 +34,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  #resources :articles
-  resources :articles do
-    resources :comments
-  end
-  resources :users, except: [:new] do
-    resources :comments
-  end
+
   # Example resource route with options:
   #   resources :products do
   #     member do
@@ -49,7 +55,8 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     #     resources :sales do
+  #     resources :comments
+  #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end

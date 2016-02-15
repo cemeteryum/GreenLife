@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Chals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Reg</th>
+      <th>Dur</th>
+      <th>User</th>
+      <th>Cat</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @chals.each do |chal| %>
+      <tr>
+        <td><%= chal.name %></td>
+        <td><%= chal.reg %></td>
+        <td><%= chal.dur %></td>
+        <td><%= chal.user %></td>
+        <td><%= chal.cat %></td>
+        <td><%= link_to 'Show', chal %></td>
+        <td><%= link_to 'Edit', edit_chal_path(chal) %></td>
+        <td><%= link_to 'Destroy', chal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Chal', new_chal_path %>
