@@ -18,12 +18,12 @@ class ArtsController < ApplicationController
   # GET /arts/new
   def new
     @art = Art.new
+    @tags
   end
 
   # GET /arts/1/edit
   def edit
   end
-
   # POST /arts
   # POST /arts.json
   def create
@@ -72,7 +72,7 @@ class ArtsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def art_params
-      params.require(:art).permit(:title, :description, :user_id, :cat_id)
+      params.require(:art).permit(:title, :description, :user_id, :cat_id, { :tag_ids => [] })
     end
     def require_same_user
 			if current_user != @art.user and !current_user.admin?

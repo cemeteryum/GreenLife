@@ -7,6 +7,7 @@
     <tr>
       <th>Title</th>
       <th>Description</th>
+      <th>Category</th>
       <% #if logged_in? && (current_user == art.user || current_user.admin?) %>
       <th colspan="3"></th>
       <% #end %>
@@ -19,6 +20,7 @@
       <tr>
         <td><%= art.title %></td>
         <td><%= art.description %></td>
+        <td><%= art.cat.name %></td>
         <td><%= link_to 'Show', art %></td>
         <% if logged_in? && (current_user == art.user || current_user.admin?) %>
         <td><%= link_to 'Edit', edit_art_path(art) %></td>

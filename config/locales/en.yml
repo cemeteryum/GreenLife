@@ -21,3 +21,13 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      art:
+        cat_id: "Category"
+  errors:
+      models:
+        art:
+          attributes:
+            cat_id:
+              blank: "Category"
