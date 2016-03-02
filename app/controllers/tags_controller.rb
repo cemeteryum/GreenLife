@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   before_action :set_tag, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :show, :new, :edit, :update, :destroy]
 
   # GET /tags
   # GET /tags.json
@@ -71,4 +72,11 @@ class TagsController < ApplicationController
     def tag_params
       params.require(:tag).permit(:name, :description)
     end
+    
+    def require_admin
+		  if logged_in? and !current_user.admin?
+		    flash[:danger] = "Only admin users cand perform that action"
+		    redirect_to root_path #redirect_to(root_url) unless current_user.admin?
+		  end
+	  end
 end

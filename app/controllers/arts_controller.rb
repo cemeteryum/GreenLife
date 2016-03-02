@@ -1,5 +1,6 @@
 class ArtsController < ApplicationController
   before_action :set_art, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
 
   # GET /arts
   # GET /arts.json
@@ -10,6 +11,8 @@ class ArtsController < ApplicationController
   # GET /arts/1
   # GET /arts/1.json
   def show
+    @comms = @art.coms.where(p_id: '0')
+    @reps = @art.coms
   end
 
   # GET /arts/new
@@ -76,5 +79,11 @@ class ArtsController < ApplicationController
 				flash[:danger] = "You can only edit your delete your own articles"
 				redirect_to root_path
 			end
+    end
+    def logged_in_user
+      unless logged_in?
+        flash[:danger] = "Please log in."
+        redirect_to login_url
+      end
     end
 end

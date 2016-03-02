@@ -1,5 +1,6 @@
 class CatsController < ApplicationController
   before_action :set_cat, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: [:index, :show, :new, :edit, :update, :destroy]
 
   # GET /cats
   # GET /cats.json
@@ -71,4 +72,11 @@ class CatsController < ApplicationController
     def cat_params
       params.require(:cat).permit(:name, :description)
     end
+    
+    def require_admin
+		  if logged_in? and !current_user.admin?
+		    flash[:danger] = "Only admin users cand perform that action"
+		    redirect_to root_path #redirect_to(root_url) unless current_user.admin?
+		  end
+		end
 end

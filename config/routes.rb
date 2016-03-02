@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   resources :hits
   resources :chals
   resources :treats
-  resources :treats
   #resources :coms
   resources :arts do
     resources :coms
@@ -17,7 +16,7 @@ Rails.application.routes.draw do
   resources :tags
   resources :cats
   resources :users do
-    resources :comments
+    resources :coms
     resources :arts
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -59,7 +59,7 @@ class ComsController < ApplicationController
   def destroy
     @com.destroy
     respond_to do |format|
-      format.html { redirect_to coms_url, notice: 'Com was successfully destroyed.' }
+      format.html { redirect_to arts_url(@art), notice: 'Com was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -72,6 +72,6 @@ class ComsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def com_params
-      params.require(:com).permit(:text, :user_id, :art_id)
+      params.require(:com).permit(:text, :user_id, :art_id, :p_id)
     end
 end
