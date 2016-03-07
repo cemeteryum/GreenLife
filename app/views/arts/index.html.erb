@@ -2,7 +2,7 @@
 
 <!-- Article template (multiply till you drop)-->
 <% @arts.each do |art| %>
-  <div class = "col-md-3 custom_margin">
+  <div class = "col-md-4 custom_margin">
     <div class = "art_container">
       
       <div class = "art_header">
@@ -24,8 +24,7 @@
       </div>
     
       <div class = "art_description">
-        <%= art.description %>
-        <%= link_to 'Show', art %>
+        <%= art.description %> are <%= art.coms.count %> commenturi
       </div>
     
       <div class = "art_details">
