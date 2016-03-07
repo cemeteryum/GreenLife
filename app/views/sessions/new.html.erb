@@ -1,18 +1,38 @@
-<%= form_for(:session, url: login_path) do |f| %>
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="checkbox">
-  <%= f.label :remember_me do %>
-  <%= f.check_box :remember_me %>
-  <span>Remember me on this computer</span>
-  <% end %>
-  </div>
-  <%= f.submit "Log in" %>
-<% end %>
-  <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<body class = "navbar-inverse">
+<div class = "modal-dialog">
+	<div class = "modal-content">
+		<div class="modal-header" style="padding:35px 50px;">
+			<h4><span class="glyphicon glyphicon-lock"></span> Log in</h4>
+		</div>
+	    <div class="modal-body" style="padding:40px 50px;">
+	      <%= form_for(:session, url: login_path) do |f| %>
+	      <!--form role="form"-->
+	        <div class="field form-group">
+            <%= f.label :username %><br>
+            <%= f.text_field :username, :class=>"form-control" %>
+          </div>
+          <div class="field form-group">
+            <%= f.label :password %><br>
+            <%= f.password_field :password, :class=>"form-control" %>
+          </div>
+          <div class="checkbox">
+            <%= f.label :remember_me do %>
+            <%= f.check_box :remember_me %>
+            <span>Remember me on this computer</span>
+            <% end %>
+          </div>
+          <div class="actions">
+            <%= f.submit "Log in", :class => 'btn btn-success btn-block' %>
+          <% end %>
+          </div>
+        <!--/form-->
+      </div>
+  	<div class="modal-footer">
+			<%= link_to 'Cancel' ,root_path, :class=>"btn btn-danger btn-default pull-left" %>
+			<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+      <!-- Implement forgot password method-->
+			<p><a href="#">Forgot Password?</a></p>
+      <!-- Implement forgot password method-->
+			</div>
+	</div>
+</div> 

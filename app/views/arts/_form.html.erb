@@ -27,6 +27,6 @@
     <%= collection_check_boxes(:art, :tag_ids, Tag.all, :id, :name) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit(@art.new_record? ? "Create article" : "Update article") %>
   </div>
 <% end %>

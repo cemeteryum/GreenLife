@@ -1,0 +1,72 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	margin: 0;
+	padding-top: 80px; 
+	background-color: #e7e7e7;
+	height: 100%;
+}
+
+.center-cropped {
+  object-fit: none; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  height: 200px;
+  width: 500px;
+}
+
+.post-cropped {
+  object-fit: none; /* Do not scale the image */
+  object-position: center; /* Center the image within the element */
+  height: 175px;
+  width: 360px;
+}
+
+.types { 
+    color: white; 
+    background-color: black; 
+    overflow: auto; 
+    min-width: 100%;
+    padding-left: 200;
+}
+
+.art_control{
+    float: right;
+}
+
+.art_container{
+    padding: 10px;
+    background-color: #222222;
+    color: white;
+    height: 190px;
+}
+.art_header{
+    height: 45px;
+    font-size: 95%;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #e9f5be;
+}
+
+.art_header a:visited {
+    color: #e9f5be;
+    text-decoration: none;
+}
+.art_description{
+    border-top: 2px solid #abce2f;
+    padding-top: 6px;
+    height: 90px;
+    font-size: 115%;
+    border-bottom: 1px solid #abce2f;
+}
+.art_details{
+    font-size: 75%;
+    color: #8f8f8f;
+}
+
+.custom_margin{
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+} 

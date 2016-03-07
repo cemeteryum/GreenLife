@@ -1,6 +1,7 @@
 class ArtsController < ApplicationController
   before_action :set_art, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /arts
   # GET /arts.json
@@ -31,7 +32,7 @@ class ArtsController < ApplicationController
     @art.user = current_user
     respond_to do |format|
       if @art.save
-        format.html { redirect_to @art, notice: 'Art was successfully created.' }
+        format.html { redirect_to @art, :flash => { :success => "Article was successfully created." } }
         format.json { render :show, status: :created, location: @art }
       else
         format.html { render :new }
@@ -45,7 +46,7 @@ class ArtsController < ApplicationController
   def update
     respond_to do |format|
       if @art.update(art_params)
-        format.html { redirect_to @art, notice: 'Art was successfully updated.' }
+        format.html { redirect_to @art, :flash => { :success => "Article was successfully updated." }}
         format.json { render :show, status: :ok, location: @art }
       else
         format.html { render :edit }
@@ -59,7 +60,7 @@ class ArtsController < ApplicationController
   def destroy
     @art.destroy
     respond_to do |format|
-      format.html { redirect_to arts_url, notice: 'Art was successfully destroyed.' }
+      format.html { redirect_to arts_url, :flash => { :success => "Article was successfully deleted." } }
       format.json { head :no_content }
     end
   end
@@ -75,9 +76,9 @@ class ArtsController < ApplicationController
       params.require(:art).permit(:title, :description, :user_id, :cat_id, { :tag_ids => [] })
     end
     def require_same_user
-			if current_user != @art.user and !current_user.admin?
+			unless current_user == @art.user or current_user.admin?
 				flash[:danger] = "You can only edit your delete your own articles"
-				redirect_to root_path
+				redirect_to arts_path
 			end
     end
     def logged_in_user

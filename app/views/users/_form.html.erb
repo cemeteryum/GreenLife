@@ -1,41 +1,61 @@
-<%= form_for(@user) do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
+<body class = "navbar-inverse">
+<div class = "modal-dialog">
+	<div class = "modal-content">
+		<div class="modal-header" style="padding:35px 50px;">
+		<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+			<h4><span class="glyphicon glyphicon-lock"></span> <%= (@user.new_record? ? "Sign up" : "Edit details") %></h4>
+		</div>
+		<div class="modal-body" style="padding:40px 50px;">
+		<%= form_for(@user) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
       <% end %>
-      </ul>
+    <div class="form-group field">
+      <span class="glyphicon glyphicon-user"></span>
+      <%= f.label :fname, "First name" %><br>
+      <%= f.text_field :fname, :class=>"form-control" %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :fname %><br>
-    <%= f.text_field :fname %>
-  </div>
-  <div class="field">
-    <%= f.label :lname %><br>
-    <%= f.text_field :lname %>
-  </div>
-  <div class="field">
-    <%= f.label :username %><br>
-    <%= f.text_field :username %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirmation" %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit(@user.new_record? ? "Sign up" : "Update account") %>
-  </div>
-<% end %>
+    <div class="form-group field">
+      <span class="glyphicon glyphicon-user"></span>
+      <%= f.label :lname, "Last name" %><br>
+      <%= f.text_field :lname, :class=>"form-control" %>
+    </div>
+    <div class="form-group field">
+      <span class="glyphicon glyphicon-asterisk"></span> 
+      <%= f.label :username, "Username" %><br>
+      <%= f.text_field :username, :class=>"form-control" %>
+    </div>
+    <div class="form-group field">
+      <span class="glyphicon glyphicon-eye-open"></span> 
+      <%= f.label :email, "E-mail" %><br>
+      <%= f.text_field :email, :class=>"form-control" %>
+    </div>
+    <div class="form-group field">
+      <span class="glyphicon glyphicon-eye-open"></span> 
+      <%= f.label :password, "Password" %><br>
+      <%= f.password_field :password, :class=>"form-control" %>
+    </div>
+    <div class="form-group field">
+      <%= f.label :password_confirmation, "Confirmation" %><br>
+      <span class="glyphicon glyphicon-eye-close"></span>
+      <%= f.password_field :password_confirmation, :class=>"form-control" %>
+    </div>
+    <div class="actions">
+      <%= f.submit(@user.new_record? ? "Sign up" : "Update account", :class => 'btn btn-success btn-block') %>
+    </div>
+    <% end %>
+    </div>
+		<div class="modal-footer">
+		  <%= link_to 'Cancel' ,root_path, :class=>"btn btn-danger btn-default pull-left" %>
+		  <p>Already a member? <%= link_to "Log In", login_path%></p>
+		</div>
+		</div>
+	</div>
+</body>

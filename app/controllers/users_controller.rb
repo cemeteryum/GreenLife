@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
-  before_action :require_admin, only: [:index, :destroy]
+  before_action :require_same_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, only: :index
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
 
   # GET /users
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:fname, :lname, :username, :email, :password_digest, :remember_digest, :admin, :moderator, :password, :password_confirmation)
     end
     def require_same_user
-		  if !logged_in? && current_user != @user and !current_user.admin?
+		  unless current_user == @user or current_user.admin?
 		    flash[:danger] = "You can only edit your own account"
 		    redirect_to root_path
 		  end
@@ -84,7 +84,7 @@ class UsersController < ApplicationController
 		def require_admin
 		  if logged_in? and !current_user.admin?
 		    flash[:danger] = "Only admin users cand perform that action"
-		    redirect_to root_path #redirect_to(root_url) unless current_user.admin?
+		    redirect_to root_path
 		  end
 		end
 		def logged_in_user

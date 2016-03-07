@@ -6,36 +6,65 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-
-<header>GreenLife Logo</header>
-
 <nav>
-<ul>
-<li><%= link_to 'Home', root_path %></li>
-<li><%= link_to 'Articles',arts_path %></li>
-<li><%= link_to 'Hawaii Treats',treats_path %></li>
-<li><%= link_to 'Challenges',chals_path %></li>
-<% if current_user.try(:admin?) && logged_in?  %>
-<li><%= link_to "Users", users_path %></li>
-<li><%= link_to "Categories", cats_path %></li>
-<li><%= link_to "Tags", tags_path %></li>
-<% end %>
-</ul>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class = "container">
+      <!-- BUTTON that appears when window is resized small -->
+      <button class="navbar-toggle" data-toggle = "collapse" data-target=".navHeaderCollapse">
+        <span class = "icon-bar"></span>
+        <span class = "icon-bar"></span>
+        <span class = "icon-bar"></span>
+      </button>
+      <!-- MENU / LOGIN -->
+      <div class = "collapse navbar-collapse navHeaderCollapse">
+			<ul class="nav navbar-nav navbar-right">
+        <li> 
+          <% if logged_in? %>
+          <section>Welcome <%= current_user.username %>, <%= link_to 'Log out', logout_path, method: :destroy %></section>
+          <% else %>
+          
+          <!-- <section>Welcome Guest, <a href = "#login" data-toggle="modal"> Log in</a> / <a href = "#signup" data-toggle="modal">Sign up</a></section> -->
+          
+          <section>Welcome Guest, <%= link_to "Log In", login_path%> / <%= link_to "Sign up", signup_path%></section>
+          <% end %>
+        </li>
+			</ul>	
+		</div>		
+		<!-- MENU / NAVGATION -->
+		<div class = "collapse navbar-collapse navHeaderCollapse">
+		  <%= image_tag "logo.png", :class => 'navbar-brand' %>
+			<ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Home' ,root_path %></li>
+        <li><%= link_to 'Articles',arts_path %></li>
+        <li><%= link_to 'Hawaii Treats',treats_path %></li>
+        <li><%= link_to 'Challenges',chals_path %></li>
+        <% if current_user.try(:admin?) && logged_in?  %>
+        <li><%= link_to "Users", users_path %></li>
+        <li><%= link_to "Categories", cats_path %></li>
+        <li><%= link_to "Tags", tags_path %></li>
+        <% end %>
+				<!-- SEARCH BUTTON (implement functionality) -->
+				<li class = "dropdown">
+					<a href = "#" class = "dropdown-toggle" data-toggle = "dropdown"> <span class="glyphicon glyphicon-search"></span></a>
+					<ul class = "dropdown-menu">
+						<li><a href="#"><input type="text" style="width: auto;" class="form-control" id="search"></a></li>
+					</ul>
+				</li>
+			 </ul>	
+		  </div>
+	  </div>   
+  </div>
 </nav>
-<% if logged_in? %>
-<section>Welcome <%= current_user.username %>, <%= link_to 'Log out', logout_path, method: :destroy %></section>
-<% else %>
-<section>Welcome Guest, <%= link_to "Log In", login_path%>/<%= link_to "Sign up", signup_path%></section>
-<% end %>
 
 <br />
 
 <body>
-<% flash.each do |name, msg| %>
-<p><%= msg %></p>
+<div class="container">
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
 <%= yield %>
-
+</div>
 </body>
 <br />
 <footer>Copyright bla</footer>
