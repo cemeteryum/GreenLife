@@ -6,15 +6,21 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
   post 'logout', to: 'sessions#destroy'
+  #get 'arts/:name', to: 'arts#index'
   resources :hits
   resources :chals
   resources :treats
   #resources :coms
   resources :arts do
     resources :coms
+    member do
+      post 'like'
+    end
   end
   resources :tags
-  resources :cats
+  resources :cats do
+    resources :arts, only: :index 
+  end
   resources :users do
     resources :coms
     resources :arts

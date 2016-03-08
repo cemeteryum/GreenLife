@@ -6,9 +6,13 @@ class ArtsController < ApplicationController
   # GET /arts
   # GET /arts.json
   def index
-    @arts = Art.all
+    @arts = Art.all#.sort_by{|artlikes| artlikes.thumb_up_total}.reverse
+    if params[:cat_id]
+    @cat = Cat.find(params[:cat_id])
+    @arts = Art.all.where(cat_id: @cat.id)
+    end
   end
-
+  
   # GET /arts/1
   # GET /arts/1.json
   def show
@@ -19,7 +23,7 @@ class ArtsController < ApplicationController
   # GET /arts/new
   def new
     @art = Art.new
-    @tags
+    #@tags
   end
 
   # GET /arts/1/edit
@@ -64,7 +68,19 @@ class ArtsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  
+  def like
+    @art = Art.find(params[:id])
+    like = Artlike.create(like: params[:like], user: current_user, art: @art)
+    if like.valid?
+      flash[:success] = "Your selection was successful"
+      redirect_to :back
+    else
+      flash[:danger] = "Your can only like/dislike once"
+      redirect_to :back
+    end
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_art

@@ -8,6 +8,16 @@
   <%= @art.description %>
 </p>
 
+<%= link_to like_art_path(@art, like: true), method: :post do %>
+ <i class="glyphicon glyphicon-thumbs-up"></i>
+<% end %>
+<%= @art.thumb_up_total %>
+&nbsp
+<%= link_to like_art_path(@art, like: false), method: :post do %>
+ <i class="glyphicon glyphicon-thumbs-down"></i>
+<% end %>
+<%= @art.thumb_dw_total %>
+
 <h2>Comments</h2>
 <% @comms.each do |com| #@art.coms.each do |com| %>
   <p>

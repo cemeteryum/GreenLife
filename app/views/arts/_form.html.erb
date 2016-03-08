@@ -1,3 +1,4 @@
+<h1><%= (@art.new_record? ? "Create article" : "Update article") %></h1>
 <%= form_for(@art) do |f| %>
   <% if @art.errors.any? %>
     <div id="error_explanation">

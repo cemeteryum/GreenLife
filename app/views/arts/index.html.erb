@@ -19,16 +19,31 @@
         <% end %>
         <div class = "art_header">
           <%= link_to art.title, art %>
+          <br />
+          <%= link_to art.cat.name, cat_arts_path(art.cat) %>
         </div>
         
       </div>
     
       <div class = "art_description">
-        <%= art.description %> are <%= art.coms.count %> commenturi
+        <%= art.description %>
       </div>
     
-      <div class = "art_details">
-        by: <%= art.user.username %>, <%= time_ago_in_words(art.created_at) %> ago, last updated: <%= time_ago_in_words(art.updated_at) %> ago
+      <div class = "art_details pull-left">
+        by: <%= art.user.username %>, <%= time_ago_in_words(art.created_at) %> ago <br />last updated: <%= time_ago_in_words(art.updated_at) %> ago
+      </div>
+      <div class="pull-right">
+        <%= link_to like_art_path(art, like: true), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-up"></i>
+        <% end %>
+        <%= art.thumb_up_total %>
+        &nbsp
+        <%= link_to like_art_path(art, like: false), method: :post do %>
+          <i class="glyphicon glyphicon-thumbs-down"></i>
+        <% end %>
+        <%= art.thumb_dw_total %>
+        <br />
+        Comments <span class="badge"><%= art.coms.count %></span>
       </div>
     </div>
   </div>
