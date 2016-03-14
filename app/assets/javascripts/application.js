@@ -14,4 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
+//= require customJS
+//= require colorfinder-1.1
+//= require colorPallete
 //= require_tree .

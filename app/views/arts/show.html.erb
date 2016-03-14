@@ -1,64 +1,119 @@
-<p>
-  <strong>Title:</strong>
-  <%= @art.title %>
-</p>
 
-<p>
-  <strong>Description:</strong>
+<div class = "show_title">
+  
+  
+  <%= @art.title %> 
+  <div style="float: right; font-size: 10px; color: #add12f; letter-spacing: 2px;"> 
+    <%= link_to 'Edit', edit_art_path(@art) %> |
+    <%= link_to 'Back', arts_path %>created by: <%= @art.user.username %> 
+  </div>
+</div>
+
+<!-- Implementeaza imagine pentru fiecare articol -->
+<% pth = image_path("Title.jpg") %>   
+<div style="background: url(<%= pth %>) center center; background-size: cover; width: 100%; height: 300px"></div>
+
+<div class = "show_content">
   <%= @art.description %>
-</p>
+</div>
 
-<h2>Comments</h2>
-<% @comms.each do |com| #@art.coms.each do |com| %>
-  <p>
-    <b>Comment:</b>
-    <%= com.text %> |
-    <% if logged_in? && (current_user == com.user || current_user.admin?) %>
-    <%= link_to 'Destroy Comment', [com.art, com],
-               :confirm => 'Are you sure?',
-               :method => :delete %> |
-    <% end %>
-    <small><td>Created by: <%= com.user.username %>, <%= time_ago_in_words(com.created_at) %> ago, last updated: <%= time_ago_in_words(com.updated_at) %> </td></small>
-    
-        <% @reps.each do |rep| #@art.reps.each do |rep| %>
-          <% if rep.p_id == com.id%>
-            <p>
-                <b>Reply:</b>
-                <%= rep.text %> |
-                <% if logged_in? && (current_user == rep.user || current_user.admin?) %>
-                <%= link_to 'Destroy reply', [rep.art, rep],
-                           :confirm => 'Are you sure?',
-                           :method => :delete %> |
-                <% end %>
-                <small><td>Created by: <%= rep.user.username %>, <%= time_ago_in_words(rep.created_at) %> ago, last updated: <%= time_ago_in_words(rep.updated_at) %> </td></small>
-            <% end %>
-            <% end %>
-    
-      <%= form_for([@art, @art.coms.build]) do |f| %>
-        <%= f.hidden_field :p_id, :value => com.id %>
+<div style = "margin-top: 10px; margin-bottom: 10px; border-radius: 15px; background-color: #add12f; color: #222222; font-size: 20px; font-weight: bold; letter-spacing: -2px; padding: 10px;">
+  COMMENTS
+</div>
+
+    <!-- Add comment section -->
+    <%= form_for([@art, @art.coms.build]) do |f| %>
+      <div class="form-group">
+        <%= f.hidden_field :p_id, :value => 0 %>
+        <label for="comment">Your Comment</label>
         <div class="field">
-        <%= f.label :text %><br />
-        <%= f.text_area :text %>
+          <%= f.text_area :text, :class => "form-control", :rows => "3", :cols => "30" %>
         </div>
-        <div class="actions">
-        <%= f.submit %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Add Comment", :class => "btn" %>
+      </div>
+    <% end %>
+    <!-- End of Add comment section -->
+   
+<div class="commentSection">
+  <div class="post-comments">
+    <div class="row">
+      
+    <!-- Comment in media -->
+      
+    <% @comms.each do |com| #@art.coms.each do |com| %>
+    
+      <!-- Each Comment -->
+      <div class="media">
+        
+        <!-- Colapse for comment -->
+        <div class="media-heading">
+          <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapse<%= com.id %>" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button> <span class="label label-info"><%= com.user.username %></span> <%= time_ago_in_words(com.created_at) %> ago
         </div>
-        <% end %>
-  </p>
-<% end %>
 
-<h2>Add a comment:</h2>
-<%= form_for([@art, @art.coms.build]) do |f| %>
-  <%= f.hidden_field :p_id, :value => 0 %>
-  <div class="field">
-    <%= f.label :text %><br />
-    <%= f.text_area :text %>
+        <!-- Colapse everything from here down -->
+        <div class="panel-collapse collapse in" id="collapse<%= com.id %>">
+
+          <!-- Actual comment  -->
+          <div class="media-body">
+            <p><%= com.text %></p>
+            
+            <!-- Reply form for comm ID -->
+            <div class="comment-meta">
+              <% if logged_in? && (current_user == com.user || current_user.admin?) %>
+                <%= link_to 'Delete comment', [com.art, com],
+                   :confirm => 'Are you sure?',
+                   :method => :delete %> |
+              <% end %>
+ 
+              <span>
+                <a class="" role="button" data-toggle="collapse" href="#reply<%= com.id %>" aria-expanded="false" aria-controls="collapseExample">Add Reply</a>
+              </span>
+                
+              <div class="collapse" id="reply<%= com.id %>">
+                <%= form_for([@art, @art.coms.build]) do |f| %>
+                  <%= f.hidden_field :p_id, :value => com.id %>
+                  <div class="field form-group">
+                    <label for="comment">Your Comment</label>
+                    <%= f.text_area :text, :class=>"form-control", :rows=>"3" %>
+                  </div>
+                  <div class="actions">
+                    <%= f.submit "Add Reply", :class => "btn btn-default" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+            <!-- End of reply form -->
+            
+            <!-- All replays for comm ID -->
+            <% @reps.each do |rep| #@art.reps.each do |rep| %>
+              <% if rep.p_id == com.id%>
+                <div class="media">
+                  
+                  <!-- Colapse reply -->
+                  <div class="media-heading">
+                    <button class="btn btn-default btn-collapse btn-xs" type="button" data-toggle="collapse" data-target="#collapseReply<%= rep.id %>" aria-expanded="false" aria-controls="collapseExample"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button> <span class="label label-info"><%= rep.user.username %></span> <%= time_ago_in_words(rep.created_at) %> ago
+                  </div>
+    
+                  <div class="panel-collapse collapse in" id="collapseReply<%= rep.id %>">
+  
+                    <div class="media-body">
+                      <p><%= rep.text %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <!-- End of replys -->
+            
+          </div>
+        </div>
+      </div>
+      <% end %>
+      <!-- End of Comment -->
+
+    <!-- End of Comment Template -->
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-
-<%= link_to 'Edit', edit_art_path(@art) %> |
-<%= link_to 'Back', arts_path %>
+</div>
