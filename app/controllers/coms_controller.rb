@@ -28,13 +28,12 @@ class ComsController < ApplicationController
     @com = Com.new(com_params)
     @com.user = current_user
     @com.art = @art
-    
     respond_to do |format|
       if @com.save
         format.html { redirect_to @art, notice: 'Com was successfully created.' }
         format.json { render :show, status: :created, location: @com }
       else
-        format.html { render :new }
+        format.html { redirect_to @art, :flash => { :danger => "Text must not be blank" } }
         format.json { render json: @com.errors, status: :unprocessable_entity }
       end
     end

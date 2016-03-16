@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_many :treats, dependent: :destroy
   has_many :coms, dependent: :destroy
   has_many :artlikes, dependent: :destroy
+  has_many :treatlikes, dependent: :destroy
   before_save { self.email = email.downcase}
   validates :username, presence: true,
             uniqueness: {case_sensitive: false},

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reps
   root 'pages#home'
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
@@ -7,10 +8,15 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   post 'logout', to: 'sessions#destroy'
   #get 'arts/:name', to: 'arts#index'
-  resources :hits
-  resources :chals
-  resources :treats
-  #resources :coms
+  resources :chals do
+    resources :hits
+  end
+  resources :treats do
+    resources :reps
+    member do
+      post 'like'
+    end
+  end
   resources :arts do
     resources :coms
     member do
@@ -20,8 +26,11 @@ Rails.application.routes.draw do
   resources :tags
   resources :cats do
     resources :arts, only: :index 
+    resources :treats, only: :index
   end
   resources :users do
+    resources :reps
+    resources :hits
     resources :coms
     resources :arts
   end

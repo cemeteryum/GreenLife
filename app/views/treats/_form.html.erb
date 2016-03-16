@@ -1,41 +1,51 @@
-<%= form_for(@treat) do |f| %>
-  <% if @treat.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@treat.errors.count, "error") %> prohibited this treat from being saved:</h2>
-
-      <ul>
-      <% @treat.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class = "modal-dialog">
+	<div class = "modal-content">
+    <div class="modal-header" style="padding:35px 50px;">
+      <h1><%= (@treat.new_record? ? "Create treat" : "Update treat") %></h1>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <div class="modal-body" style="padding:40px 50px;">
+      <%= form_for(@treat) do |f| %>
+        <% if @treat.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@treat.errors.count, "error") %> prohibited this treat from being saved:</h2>
+            <ul>
+            <% @treat.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="form-group field">
+          <%= f.label :name %><br>
+          <%= f.text_field :name, :class=>"form-control" %>
+        </div>
+        <div class="form-group field">
+          <%= f.label :'medical diagnosis' %><br>
+          <%= f.check_box :md, :class=>"checkbox-inline" %>
+        </div>
+        <div class="form-group field">
+          <%= f.label :Symptoms %><br>
+          <%= f.text_area :sym, :class=>"form-control" %>
+        </div>
+        <div class="form-group field">
+          <%= f.label :Treatment %><br>
+          <%= f.text_area :reg, :class=>"form-control"%>
+        </div>
+        <div class="form-group field">
+        <%= collection_select(:treat, :cat_id, Cat.all, :id, :name, {prompt: true}, {class: "form-control"}) %>
+        </div>
+        <div class="form-group field">
+          <%= f.label :tags %><br>
+          <%= collection_check_boxes(:treat, :tag_ids, Tag.all, :id, :name, {}, {class: "checkbox-inline"}) %>
+        </div>
+        <div class="actions">
+          <%= f.submit(@treat.new_record? ? "Create treat" : "Update treat", :class => 'btn btn-success btn-block') %>
+        </div>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <%= link_to 'Back' ,treats_path, :class=>"btn btn-danger btn-default pull-left" %>
+	    <%= link_to "Show" ,@treat, :class=>"btn btn-danger btn-default pull-left" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :md %><br>
-    <%= f.check_box :md %>
-  </div>
-  <div class="field">
-    <%= f.label :sym %><br>
-    <%= f.text_area :sym %>
-  </div>
-  <div class="field">
-    <%= f.label :reg %><br>
-    <%= f.text_area :reg %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :cat_id %><br>
-    <%= f.text_field :cat_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

@@ -3,7 +3,7 @@
 	<div class = "modal-content">
 		<div class="modal-header" style="padding:35px 50px;">
 		<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-			<h4><span class="glyphicon glyphicon-lock"></span> <%= (@user.new_record? ? "Sign up" : "Edit details") %></h4>
+			<h4><span class="glyphicon glyphicon-lock"></span> <%= (@user.new_record? ? "Sign up" : "Edit details" %></h4>
 		</div>
 		<div class="modal-body" style="padding:40px 50px;">
 		<%= form_for(@user) do |f| %>
@@ -54,7 +54,7 @@
     </div>
 		<div class="modal-footer">
 		  <%= link_to 'Cancel' ,root_path, :class=>"btn btn-danger btn-default pull-left" %>
-		  <p>Already a member? <%= link_to "Log In", login_path%></p>
+		  <p>Already a member? <%= link_to "Log In", login_path %></p>
 		</div>
 		</div>
 	</div>

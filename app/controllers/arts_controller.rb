@@ -1,7 +1,7 @@
 class ArtsController < ApplicationController
   before_action :set_art, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
-  before_action :require_same_user, only: [:edit, :update, :destroy]
+    before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /arts
   # GET /arts.json
@@ -23,12 +23,12 @@ class ArtsController < ApplicationController
   # GET /arts/new
   def new
     @art = Art.new
-    #@tags
   end
 
   # GET /arts/1/edit
   def edit
   end
+  
   # POST /arts
   # POST /arts.json
   def create

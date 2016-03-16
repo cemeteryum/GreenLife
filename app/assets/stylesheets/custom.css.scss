@@ -70,3 +70,39 @@ body {
     margin-bottom: 15px;
 
 } 
+/*ceme*/
+.t_control{
+    float: right;
+}
+
+.t_container{
+    padding: 10px;
+    background-color: #222222;
+    color: white;
+    height: 180px;
+    width: 80%;
+}
+.t_header{
+    height: 30%;
+    font-size: 95%;
+    text-transform: capitalize;
+    font-weight: bold;
+    color: #e9f5be;
+}
+
+.t_header a:visited {
+    color: #e9f5be;
+    text-decoration: none;
+}
+.t_description{
+    border-top: 2px solid #abce2f;
+    padding-top: 6px;
+    height: 50%;
+    font-size: 115%;
+    border-bottom: 1px solid #abce2f;
+}
+.t_details{
+    height: 20%;
+    font-size: 75%;
+    color: #8f8f8f;
+}

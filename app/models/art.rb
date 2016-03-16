@@ -17,4 +17,8 @@ class Art < ActiveRecord::Base
     self.artlikes.where(like: false).size
   end
   
+  def comments
+    self.coms.where(p_id: 0).size
+  end
+  
 end
