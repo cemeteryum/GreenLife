@@ -5,6 +5,19 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+    
+  <% bgg = image_path("bg.jpg") %>
+  
+  <style>
+  body {
+  	margin: 0;
+  	padding-top: 80px; 
+  	background-color: #e7e7e7;
+  	height: 100%;
+  	background: url(<%= bgg %>);
+  }
+  </style>
+  
 </head>
 <nav>
   <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,11 +33,8 @@
 			<ul class="nav navbar-nav navbar-right">
         <li> 
           <% if logged_in? %>
-          <section>Welcome <%= current_user.username %>, <%= link_to 'Log out', logout_path, method: :destroy %></section>
+            <section>Welcome <%= current_user.username %>, <%= link_to 'Log out', logout_path, method: :destroy %></section>
           <% else %>
-          
-          <!-- <section>Welcome Guest, <a href = "#login" data-toggle="modal"> Log in</a> / <a href = "#signup" data-toggle="modal">Sign up</a></section> -->
-          
           <section>Welcome Guest, <%= link_to "Log In", login_path%> / <%= link_to "Sign up", signup_path%></section>
           <% end %>
         </li>
@@ -63,10 +73,19 @@
 <% flash.each do |key, value| %>
 <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
+
+<div class = "trending">
+   
+</div>
+
+
 <%= yield %>
+
+<div class = "ads">
+</div>
+
 </div>
 </body>
 <br />
-<footer>Copyright bla</footer>
 
 </html>
