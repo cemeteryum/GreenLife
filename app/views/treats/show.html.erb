@@ -1,20 +1,20 @@
 <p>
-  <strong>Name:</strong>
+  <strong>How i treat:</strong>
   <%= @treat.name %>
 </p>
 
 <p>
-  <strong>Md:</strong>
+  <strong>Medically diagnosed:</strong>
   <%= @treat.md ? "Yes":"No" %>
 </p>
 
 <p>
-  <strong>Sym:</strong>
+  <strong>Symptoms:</strong>
   <%= @treat.sym %>
 </p>
 
 <p>
-  <strong>Reg:</strong>
+  <strong>Treatment:</strong>
   <%= @treat.reg %>
 </p>
 
@@ -43,7 +43,7 @@
                 <small><td>Created by: <%= rep.user.username %>, <%= time_ago_in_words(rep.created_at) %> ago, last updated: <%= time_ago_in_words(rep.updated_at) %> </td></small>
             <% end %>
             <% end %>
-    
+      <% if logged_in? %>
       <%= form_for([@treat, @treat.reps.build]) do |f| %>
         <%= f.hidden_field :p_id, :value => com.id %>
         <div class="field">
@@ -54,9 +54,11 @@
         <%= f.submit %>
         </div>
         <% end %>
+      <% end %>
   </p>
 <% end %>
 
+<% if logged_in? %>
 <h2>Add a comment:</h2>
 <%= form_for([@treat, @treat.reps.build]) do |f| %>
   <%= f.hidden_field :p_id, :value => 0 %>
@@ -67,6 +69,7 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+<% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_treat_path(@treat) %> |

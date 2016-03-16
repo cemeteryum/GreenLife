@@ -23,17 +23,19 @@
 </div>
 
     <!-- Add comment section -->
-    <%= form_for([@art, @art.coms.build]) do |f| %>
-      <div class="form-group">
-        <%= f.hidden_field :p_id, :value => 0 %>
-        <label for="comment">Your Comment</label>
-        <div class="field">
-          <%= f.text_area :text, :class => "form-control", :rows => "3", :cols => "30" %>
+    <% if logged_in? %>
+      <%= form_for([@art, @art.coms.build]) do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field :p_id, :value => 0 %>
+          <label for="comment">Your Comment</label>
+          <div class="field">
+            <%= f.text_area :text, :class => "form-control", :rows => "3", :cols => "30" %>
+          </div>
         </div>
-      </div>
-      <div class="actions">
-        <%= f.submit "Add Comment", :class => "btn" %>
-      </div>
+        <div class="actions">
+          <%= f.submit "Add Comment", :class => "btn" %>
+        </div>
+      <% end %>
     <% end %>
     <!-- End of Add comment section -->
    
@@ -60,6 +62,7 @@
           <div class="media-body">
             <p><%= com.text %></p>
             
+            <% if logged_in? %>
             <!-- Reply form for comm ID -->
             <div class="comment-meta">
               <% if logged_in? && (current_user == com.user || current_user.admin?) %>
@@ -86,6 +89,7 @@
               </div>
             </div>
             <!-- End of reply form -->
+            <% end %>
             
             <!-- All replays for comm ID -->
             <% @reps.each do |rep| #@art.reps.each do |rep| %>

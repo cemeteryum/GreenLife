@@ -21,5 +21,4 @@ class Treat < ActiveRecord::Base
   def comments
     self.reps.where(p_id: 0).size
   end
-  
 end

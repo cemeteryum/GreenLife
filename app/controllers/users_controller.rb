@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, only: :index
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :already_logged_in_user, only: :new
 
   # GET /users
   # GET /users.json
@@ -91,6 +92,12 @@ class UsersController < ApplicationController
       unless logged_in?
         flash[:danger] = "Please log in."
         redirect_to login_url
+      end
+    end
+    def already_logged_in_user
+      if logged_in?
+        flash[:success] = "Already logged in"
+        redirect_to root_path
       end
     end
 end
