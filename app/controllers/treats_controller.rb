@@ -1,6 +1,6 @@
 class TreatsController < ApplicationController
   before_action :set_treat, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:new, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:new, :edit, :update, :destroy, :like]
   before_action :require_same_user, only: [:edit, :update, :destroy]
   
   # GET /treats
@@ -8,8 +8,8 @@ class TreatsController < ApplicationController
   def index
     @treats = Treat.all
     if params[:cat_id]
-    @cat = Cat.find(params[:cat_id])
-    @treats = Treat.all.where(cat_id: @cat.id)
+      @cat = Cat.find(params[:cat_id])
+      @treats = Treat.all.where(cat_id: @cat.id)
     end
   end
 

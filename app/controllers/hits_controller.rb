@@ -24,11 +24,13 @@ class HitsController < ApplicationController
   # POST /hits
   # POST /hits.json
   def create
+    @chal = Chal.find(params[:chal_id])
     @hit = Hit.new(hit_params)
-
+    @hit.user = current_user
+    @hit.chal = @chal
     respond_to do |format|
       if @hit.save
-        format.html { redirect_to @hit, notice: 'Hit was successfully created.' }
+        format.html { redirect_to @chal, notice: 'Hit was successfully created.' }
         format.json { render :show, status: :created, location: @hit }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class HitsController < ApplicationController
   def update
     respond_to do |format|
       if @hit.update(hit_params)
-        format.html { redirect_to @hit, notice: 'Hit was successfully updated.' }
+        format.html { redirect_to @chal, notice: 'Hit was successfully updated.' }
         format.json { render :show, status: :ok, location: @hit }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class HitsController < ApplicationController
   def destroy
     @hit.destroy
     respond_to do |format|
-      format.html { redirect_to hits_url, notice: 'Hit was successfully destroyed.' }
+      format.html { redirect_to chals_url(@chal), notice: 'Hit was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,6 @@ class HitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def hit_params
-      params.require(:hit).permit(:text, :user_id, :chal_id)
+      params.require(:hit).permit(:text, :user_id, :chal_id, :p_id)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160310090252) do
+ActiveRecord::Schema.define(version: 20160316114839) do
 
   create_table "artlikes", force: :cascade do |t|
     t.boolean  "like"
@@ -52,6 +52,17 @@ ActiveRecord::Schema.define(version: 20160310090252) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "challikes", force: :cascade do |t|
+    t.boolean  "like"
+    t.integer  "user_id"
+    t.integer  "chal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "challikes", ["chal_id"], name: "index_challikes_on_chal_id"
+  add_index "challikes", ["user_id"], name: "index_challikes_on_user_id"
 
   create_table "chals", force: :cascade do |t|
     t.string   "name"

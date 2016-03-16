@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :reps
+  
   root 'pages#home'
   get 'signup', to: 'users#new'
   post 'users', to: 'users#create'
@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   #get 'arts/:name', to: 'arts#index'
   resources :chals do
     resources :hits
+    member do
+      post 'like'
+    end
   end
   resources :treats do
     resources :reps
@@ -27,12 +30,15 @@ Rails.application.routes.draw do
   resources :cats do
     resources :arts, only: :index 
     resources :treats, only: :index
+    resources :chals, only: :index
   end
   resources :users do
     resources :reps
     resources :hits
     resources :coms
     resources :arts
+    resources :treats
+    resources :chals
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
