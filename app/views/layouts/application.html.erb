@@ -9,12 +9,13 @@
   <% bgg = image_path("bg.jpg") %>
   
 <style>
+
 body {
 	margin: 0;
-	padding-top: 80px; 
+	padding-top: 80px;
 	background-color: #e7e7e7;
-	height: 100%;
 	background: url(<%= bgg %>);
+	
 }
 </style>
   
@@ -32,7 +33,7 @@ body {
       <div class = "collapse navbar-collapse navHeaderCollapse">
 			<ul class="nav navbar-nav navbar-right">
         <li> 
-          <% if logged_in? %>
+          <% if logged_in? || current_user.admin? %>
           	<section>Welcome <%= current_user.username %>, <%= link_to 'Log out', logout_path, method: :destroy %></section>
           <% else %>
           	<section>Welcome Guest, <%= link_to "Log In", login_path%> / <%= link_to "Sign up", signup_path%></section>
@@ -65,27 +66,41 @@ body {
 	  </div>   
   </div>
 </nav>
-
-<br/>
-
 <body>
   
-  <div class = "trending">
+  <div id="wrap">
+  	<div class="container clearfix" style="" id="main">
+  		<% flash.each do |key, value| %>
+  			<div class="alert alert-<%= key %>"><%= value %></div>
+  		<% end %>
+  		<%= yield %>
+  	</div>
+	</div>	
+	
+  <div class = "bottomFooter" id="footer">
+    <div class = "container" >
+      <div class = "col-md-4" >
+        <div style="background-color: red; height: 75px; background-color: #4e4e4e;">
+        </div>
+      </div>
+      <div class = "col-md-4">
+        <div style="background-color: red; height: 75px; background-color: #4e4e4e;">
+        </div>  
+      </div>
+      <div class = "col-md-4">
+        <div style="background-color: red; height: 75px; background-color: #4e4e4e;">
+        </div>   
+      </div>
     </div>
+  </div>
   
+  <div class = "placeHolder1">
+    
+  </div>
   
-	<div class="container">
-		<% flash.each do |key, value| %>
-			<div class="alert alert-<%= key %>"><%= value %></div>
-		<% end %>
-		<%= yield %>
-		
-  <div class = "ads">
-    </div>
-		
-	</div>
+  <div class = "placeHolder2">
+    
+  </div>
+  
 </body>
-<br/>
-
-
 </html>

@@ -1,9 +1,23 @@
-<div style="color: black; width: 97.4%; margin-left: 15px; height: 50px; letter-spacing: -1.5px; padding: 10px; font-weight: bold; font-size: 20px; text-align: center;">
-LISTING ARTICLES <div class = "label label-default"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <%= link_to 'New Article', new_art_path %></div>
+
+<div class="pathLocation">
+          <p>LISTING ARTICLES</p> 
 </div>
 
-<% ids = 0 %>
 
+<% if logged_in? %>
+  <div class = "col-md-4 custom_margin mid">
+    <% ptth = image_path("add.jpg") %>
+      <div class = "art_container " style="background: url(<%= ptth %>) center center; background-size: cover;">
+      <%= link_to new_art_path do %>
+        <div class = "cover" style="background-color: #222222; padding-top: 50px;"></div>
+              <p>Add article</p>
+        </div>
+      <% end %>
+  </div>
+<% end %>
+  
+<% ids = 0 %>
+<div>
 <!-- Article template (multiply till you drop)-->
 <% @arts.each do |art| %>
 
@@ -49,12 +63,20 @@ LISTING ARTICLES <div class = "label label-default"><span class="glyphicon glyph
           <div class = "art_details">
             by: <%= art.user.username %>  <%= art.coms.count %> commenturi
             </br> <%= time_ago_in_words(art.created_at) %> ago, last updated: <%= time_ago_in_words(art.updated_at) %> ago
-            
           </div>
         <% end %>
-              
-    </div>
+      </div>
     </div>
   </div>
 
 <% end %>
+
+
+
+</div>
+
+
+<div class = "pathLocation2">
+          <p>LISTING ARTICLES</p> 
+</div>
+
