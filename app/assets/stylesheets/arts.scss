@@ -2,6 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.pathLocation{
+    background-color: #222222;
+    color: white;
+    width: 97.4%;
+    margin-left: 15px;
+    height: 40px;
+    letter-spacing: -1.5px;
+    margin-top: 25px;
+    padding-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.pathLocation2{
+    background-color: #222222;
+    color: white;
+    width: 97.4%;
+    margin-left: 15px;
+    height: 40px;
+    letter-spacing: -1.5px;
+    margin-top: 10px;
+    padding-top: 10px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+
 .show_title{
     color: white;
     background-color: #222222;
@@ -13,8 +48,8 @@
     padding-left: 25px;
     padding-top: 10px;
     padding-right: 10px;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .show_content{
