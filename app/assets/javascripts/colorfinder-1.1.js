@@ -123,4 +123,8 @@ function ColorFinder(colorFactorCallback) {
     return rgb.r == r && rgb.g == g && rgb.b == b;
   }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a

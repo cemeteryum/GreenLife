@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <div class = "show_title">
   
@@ -13,6 +14,24 @@
 <% pth = image_path("Title.jpg") %>   
 <div style="background: url(<%= pth %>) center center; background-size: cover; width: 100%; height: 300px"></div>
 
+=======
+<div class = "show_title">
+  
+  
+  <%= @art.title %> 
+  <div style="float: right; font-size: 10px; color: #add12f; letter-spacing: 2px;"> 
+    <% if logged_in? && (current_user == @art.user || current_user.admin?) %>
+    <%= link_to 'Edit', edit_art_path(@art) %> |
+    <% end %>
+    <%= link_to 'Back', arts_path %>created by: <%= @art.user.username %> 
+  </div>
+</div>
+
+<!-- Implementeaza imagine pentru fiecare articol -->
+<% pth = image_path("Title.jpg") %>   
+<div style="background: url(<%= pth %>) center center; background-size: cover; width: 100%; height: 300px"></div>
+
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a
 <div class = "show_content">
   <%= @art.description %>
 </div>
@@ -22,6 +41,7 @@
 </div>
 
     <!-- Add comment section -->
+<<<<<<< HEAD
     <%= form_for([@art, @art.coms.build]) do |f| %>
       <div class="form-group">
         <%= f.hidden_field :p_id, :value => 0 %>
@@ -33,6 +53,21 @@
       <div class="actions">
         <%= f.submit "Add Comment", :class => "btn" %>
       </div>
+=======
+    <% if logged_in? %>
+      <%= form_for([@art, @art.coms.build]) do |f| %>
+        <div class="form-group">
+          <%= f.hidden_field :p_id, :value => 0 %>
+          <label for="comment">Your Comment</label>
+          <div class="field">
+            <%= f.text_area :text, :class => "form-control", :rows => "3", :cols => "30" %>
+          </div>
+        </div>
+        <div class="actions">
+          <%= f.submit "Add Comment", :class => "btn" %>
+        </div>
+      <% end %>
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a
     <% end %>
     <!-- End of Add comment section -->
    
@@ -59,6 +94,10 @@
           <div class="media-body">
             <p><%= com.text %></p>
             
+<<<<<<< HEAD
+=======
+            <% if logged_in? %>
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a
             <!-- Reply form for comm ID -->
             <div class="comment-meta">
               <% if logged_in? && (current_user == com.user || current_user.admin?) %>
@@ -85,6 +124,10 @@
               </div>
             </div>
             <!-- End of reply form -->
+<<<<<<< HEAD
+=======
+            <% end %>
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a
             
             <!-- All replays for comm ID -->
             <% @reps.each do |rep| #@art.reps.each do |rep| %>

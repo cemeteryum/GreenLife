@@ -11,4 +11,8 @@ $('[data-toggle="collapse"]').on('click', function() {
     currentIcon.toggleClass('glyphicon-plus glyphicon-minus');
     $parent.find('.glyphicon').not(currentIcon).removeClass('glyphicon-minus').addClass('glyphicon-plus');
 
+<<<<<<< HEAD
 });
+=======
+}); 
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a

@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+<<<<<<< HEAD
   
   <% bgg = image_path("bg.jpg") %>
   
@@ -18,6 +19,19 @@ body {
 	
 }
 </style>
+=======
+    
+  <% bgg = image_path("bg.jpg") %>
+  
+  <style>
+  body {
+  	margin: 0;
+  	padding-top: 80px; 
+  	background-color: #e7e7e7;
+  	background: url(<%= bgg %>);
+  }
+  </style>
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a
   
 </head>
 <nav>
@@ -33,10 +47,17 @@ body {
       <div class = "collapse navbar-collapse navHeaderCollapse">
 			<ul class="nav navbar-nav navbar-right">
         <li> 
+<<<<<<< HEAD
           <% if logged_in? || current_user.admin? %>
           	<section>Welcome <%= current_user.username %>, <%= link_to 'Log out', logout_path, method: :destroy %></section>
           <% else %>
           	<section>Welcome Guest, <%= link_to "Log In", login_path%> / <%= link_to "Sign up", signup_path%></section>
+=======
+          <% if logged_in? %>
+            <section>Welcome <%= current_user.username %>, <%= link_to 'Log out', logout_path, method: :destroy %></section>
+          <% else %>
+          <section>Welcome Guest, <%= link_to "Log In", login_path%> / <%= link_to "Sign up", signup_path%></section>
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a
           <% end %>
         </li>
 			</ul>	
@@ -67,8 +88,12 @@ body {
   </div>
 </nav>
 <body>
+<<<<<<< HEAD
   
   <div id="wrap">
+=======
+<div id="wrap">
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a
   	<div class="container clearfix" style="" id="main">
   		<% flash.each do |key, value| %>
   			<div class="alert alert-<%= key %>"><%= value %></div>

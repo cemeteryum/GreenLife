@@ -17,4 +17,8 @@
 //= require customJS
 //= require colorfinder-1.1
 //= require colorPallete
+<<<<<<< HEAD
 //= require_tree .
+=======
+//= require_tree .
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a

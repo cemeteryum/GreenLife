@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160301134756) do
+ActiveRecord::Schema.define(version: 20160316114839) do
+
+  create_table "artlikes", force: :cascade do |t|
+    t.boolean  "like"
+    t.integer  "user_id"
+    t.integer  "art_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "artlikes", ["art_id"], name: "index_artlikes_on_art_id"
+  add_index "artlikes", ["user_id"], name: "index_artlikes_on_user_id"
 
   create_table "arts", force: :cascade do |t|
     t.string   "title"
@@ -41,6 +52,17 @@ ActiveRecord::Schema.define(version: 20160301134756) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "challikes", force: :cascade do |t|
+    t.boolean  "like"
+    t.integer  "user_id"
+    t.integer  "chal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "challikes", ["chal_id"], name: "index_challikes_on_chal_id"
+  add_index "challikes", ["user_id"], name: "index_challikes_on_user_id"
 
   create_table "chals", force: :cascade do |t|
     t.string   "name"
@@ -83,10 +105,23 @@ ActiveRecord::Schema.define(version: 20160301134756) do
     t.integer  "chal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "p_id"
   end
 
   add_index "hits", ["chal_id"], name: "index_hits_on_chal_id"
   add_index "hits", ["user_id"], name: "index_hits_on_user_id"
+
+  create_table "reps", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "user_id"
+    t.integer  "treat_id"
+    t.integer  "p_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "reps", ["treat_id"], name: "index_reps_on_treat_id"
+  add_index "reps", ["user_id"], name: "index_reps_on_user_id"
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -94,6 +129,17 @@ ActiveRecord::Schema.define(version: 20160301134756) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "treatlikes", force: :cascade do |t|
+    t.boolean  "like"
+    t.integer  "user_id"
+    t.integer  "treat_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "treatlikes", ["treat_id"], name: "index_treatlikes_on_treat_id"
+  add_index "treatlikes", ["user_id"], name: "index_treatlikes_on_user_id"
 
   create_table "treats", force: :cascade do |t|
     t.string   "name"

@@ -1,29 +1,86 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Let's treat:</strong>
   <%= @chal.name %>
 </p>
 
 <p>
-  <strong>Reg:</strong>
+  <strong>Treatment:</strong>
   <%= @chal.reg %>
 </p>
 
 <p>
-  <strong>Dur:</strong>
+  <strong>Duration:</strong>
   <%= @chal.dur %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @chal.user %>
-</p>
+<h2>Comments</h2>
+<% @comms.each do |com| #@treat.coms.each do |com| %>
+  <p>
+    <b>Comment:</b>
+    <%= com.text %> |
+    <% if logged_in? && (current_user == com.user || current_user.admin?) %>
+    <%= link_to 'Destroy Comment', [com.chal, com],
+               :confirm => 'Are you sure?',
+               :method => :delete %> |
+    <% end %>
+    <small><td>Created by: <%= com.user.username %>, <%= time_ago_in_words(com.created_at) %> ago, last updated: <%= time_ago_in_words(com.updated_at) %> </td></small>
+    
+        <% @reps.each do |rep| #@treat.reps.each do |rep| %>
+          <% if rep.p_id == com.id%>
+            <p>
+                <b>Reply:</b>
+                <%= rep.text %> |
+                <% if logged_in? && (current_user == rep.user || current_user.admin?) %>
+                <%= link_to 'Destroy reply', [rep.chal, rep],
+                           :confirm => 'Are you sure?',
+                           :method => :delete %> |
+                <% end %>
+                <small><td>Created by: <%= rep.user.username %>, <%= time_ago_in_words(rep.created_at) %> ago, last updated: <%= time_ago_in_words(rep.updated_at) %> </td></small>
+            <% end %>
+            <% end %>
+<<<<<<< HEAD
+      <% if logged_in? %>
+=======
+    
+>>>>>>> 85c605cb2e57abdc3d88b2e6318f287b0642a9cc
+      <%= form_for([@chal, @chal.hits.build]) do |f| %>
+        <%= f.hidden_field :p_id, :value => com.id %>
+        <div class="field">
+        <%= f.label :text %><br />
+        <%= f.text_area :text %>
+        </div>
+        <div class="actions">
+        <%= f.submit %>
+        </div>
+        <% end %>
+<<<<<<< HEAD
+      <% end %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Cat:</strong>
-  <%= @chal.cat %>
-</p>
+<% if logged_in? %>
+=======
+  </p>
+<% end %>
+
+>>>>>>> 85c605cb2e57abdc3d88b2e6318f287b0642a9cc
+<h2>Add a comment:</h2>
+<%= form_for([@chal, @chal.hits.build]) do |f| %>
+  <%= f.hidden_field :p_id, :value => 0 %>
+  <div class="field">
+    <%= f.label :text %><br />
+    <%= f.text_area :text %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<<<<<<< HEAD
+<% end %>
+=======
+>>>>>>> 85c605cb2e57abdc3d88b2e6318f287b0642a9cc
 
 <%= link_to 'Edit', edit_chal_path(@chal) %> |
 <%= link_to 'Back', chals_path %>

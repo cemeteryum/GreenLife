@@ -1,3 +1,24 @@
+<<<<<<< HEAD
+=======
+<div class="pathLocation">
+  <p>LISTING ARTICLES</p> 
+</div>
+
+<% if logged_in? %>
+ <div class = "col-md-4 custom_margin mid">
+   <% ptth = image_path("add.jpg") %>
+     <div class = "art_container " style="background: url(<%= ptth %>) center center; background-size: cover;">
+     <%= link_to new_art_path do %>
+       <div class = "cover" style="background-color: #222222; padding-top: 50px;"></div>
+             <p>Add article</p>
+       </div>
+     <% end %>
+ </div>
+<% end %>
+   
+<% ids = 0 %>
+<div>
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a
 
 <div class="pathLocation">
           <p>LISTING ARTICLES</p> 
@@ -61,6 +82,7 @@
           </div>
         <!-- Detaliile articolului -->
           <div class = "art_details">
+<<<<<<< HEAD
             by: <%= art.user.username %>  <%= art.coms.count %> commenturi
             </br> <%= time_ago_in_words(art.created_at) %> ago, last updated: <%= time_ago_in_words(art.updated_at) %> ago
           </div>
@@ -80,3 +102,32 @@
           <p>LISTING ARTICLES</p> 
 </div>
 
+=======
+            by: <%= art.user.username %>
+            &nbsp&nbsp&nbsp
+            Comments <span class="badge"><%= art.comments %></span>
+            </br>
+            <%= time_ago_in_words(art.created_at) %> ago, last updated: <%= time_ago_in_words(art.updated_at) %> ago
+            &nbsp&nbsp&nbsp
+            <%= link_to like_art_path(art, like: true), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-up"></i>
+            <% end %>
+            <%= art.thumb_up_total %>
+            &nbsp
+            <%= link_to like_art_path(art, like: false), method: :post do %>
+            <i class="glyphicon glyphicon-thumbs-down"></i>
+            <% end %>
+            <%= art.thumb_dw_total %>
+             
+            
+            
+          </div>
+        <% end %>
+      </div>        
+    </div>
+    </div>
+ 
+
+<% end %>
+</div>
+>>>>>>> d96311deeea986f16b4cd7750a1a5468b3e02b8a

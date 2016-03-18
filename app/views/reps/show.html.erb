@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @rep.text %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @rep.user %>
+</p>
+
+<p>
+  <strong>Treat:</strong>
+  <%= @rep.treat %>
+</p>
+
+<p>
+  <strong>P:</strong>
+  <%= @rep.p_id %>
+</p>
+
+<%= link_to 'Edit', edit_rep_path(@rep) %> |
+<%= link_to 'Back', reps_path %>
