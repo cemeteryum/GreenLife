@@ -1,3 +1,42 @@
 // Place all the styles related to the chals controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.small_fix{
+    background-color: var(--general-color);
+    height: 35px; 
+    margin-bottom: 15px;
+    margin-top: 5px;
+    padding-top: 9px;
+}
+
+.chals_container{
+    color: var(--tiles-text-color);
+    height: 140px;
+    background-color: var(--general-color);
+    margin-bottom: 15px;
+}
+
+
+
+
+a:link {
+    text-decoration: none;
+    color: white;
+}
+
+a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+    color: green;
+}
+
+a:active {
+    text-decoration: none;
+    color: white;
+}

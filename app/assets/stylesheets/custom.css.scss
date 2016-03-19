@@ -3,6 +3,50 @@
 @import "bootstrap";
 
 
+/**** Cleaning ****/
+
+/* Variables */
+:root {
+    --tiles-text-color: white;
+    --general-color: #222222;
+}
+
+/* Effects */
+.add_shadow {
+    -webkit-box-shadow: rgba(0,0,0,.6) 6px 8px 8px;
+    -moz-box-shadow: rgba(0,0,0,.6) 6px 8px 8px;
+    box-shadow: rgba(0,0,0,.6) 6px 8px 8px;
+}
+
+.add_hover:hover {
+    -moz-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+}
+
+/* General styling */
+.tile_header{
+    background-color: var(--general-color);
+    color: var(--tiles-text-color);
+    height: 30px;
+}
+
+
+
+
+
+
+
+/**** --------- ****/
+
+
+
+
+
+
+
+
+
 
 .center-cropped {
   object-fit: none; /* Do not scale the image */
@@ -103,12 +147,12 @@
 
 a:link {
     text-decoration: none;
-    color: red;
+    color: white;
 }
 
 a:visited {
     text-decoration: none;
-    color: red;
+    color: white;
 }
 
 a:hover {
@@ -117,7 +161,7 @@ a:hover {
 
 a:active {
     text-decoration: none;
-    color: red;
+    color: white;
 }
 
 .xbottomFooter{
@@ -140,7 +184,7 @@ a:active {
     left: 0;
     width: 100%;
     background-color: #222222;
-    height: 165px;
+    height: 145px;
     padding-top: 25px;
 }
 
@@ -178,13 +222,13 @@ body > #wrap {
 }
 
 #main {
-    padding-bottom: 165px;  /* must be same height as the footer */
+    padding-bottom: 125px;  /* must be same height as the footer */
 }
 
 #footer {
     position: relative;
-    margin-top: -165px;  /* negative value of footer height */
-    height: 165px;
+    margin-top: -125px;  /* negative value of footer height */
+    height: 125px;
     clear: both;
 } 
 
