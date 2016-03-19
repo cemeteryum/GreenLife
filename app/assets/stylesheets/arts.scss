@@ -9,15 +9,15 @@
     width: 97.4%;
     margin-left: 15px;
     height: 40px;
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
     margin-top: 25px;
     padding-top: 10px;
     margin-bottom: 10px;
     font-weight: bold;
     font-size: 20px;
     text-align: center;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: var(--corner-size);
+    border-top-right-radius: var(--corner-size);
 }
 
 .pathLocation2{
@@ -26,15 +26,15 @@
     width: 97.4%;
     margin-left: 15px;
     height: 40px;
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
     margin-top: 10px;
     padding-top: 10px;
     margin-bottom: 25px;
     font-weight: bold;
     font-size: 20px;
     text-align: center;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: var(--corner-size);
+    border-bottom-right-radius: var(--corner-size);
 }
 
 
@@ -49,8 +49,8 @@
     padding-left: 25px;
     padding-top: 10px;
     padding-right: 10px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: var(--corner-size);
+    border-bottom-right-radius: var(--corner-size);
 }
 
 .show_content{
@@ -59,8 +59,8 @@
     width: 100%;
     min-height: 300px;
     padding: 20px;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: var(--corner-size);
+    border-bottom-right-radius: var(--corner-size);
     text-align: justify;
     text-justify: inter-word;
     text-indent: 20px;

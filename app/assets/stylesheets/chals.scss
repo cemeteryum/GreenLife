@@ -40,3 +40,59 @@ a:active {
     text-decoration: none;
     color: white;
 }
+
+.tile_header {
+    background-color: var(--general-color);
+    color: var(--tiles-text-color);
+    height: 40px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+
+.tile_header .how_i{
+    color: red;
+    text-decoration: none;
+    font-size: 105%;
+    letter-spacing: -1px;
+    float: left;
+    padding-right: 20px;
+}
+
+.tile_header .treat{
+    text-decoration: none;
+    font-size: 135%;
+    letter-spacing: -1px;
+    float: left;
+    font-weight: bold;
+}
+
+.tile_description {
+    color: var(--tiles-text-color);
+    padding: 10px;
+    height: 75px;
+    width: 75%;
+    float: left;
+}
+
+.tile_details{
+    font-size: 75%;
+    color: black;
+    height: 30px;
+    font-weight: bold;
+    padding-left: 10px;
+    margin-right: 10px;
+    width: 85%;
+}
+
+.tile_duration{
+    float: right;
+    color: silver;
+    width: 15%;
+    padding-right: 15px;
+    text-align: right;
+    background-color: var(--general-color);
+    border-bottom-left-radius: var(--corner-size);
+    border-bottom-right-radius: var(--corner-size);
+    height: 30px;
+    margin-right: 15px;
+}

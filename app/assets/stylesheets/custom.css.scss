@@ -7,8 +7,9 @@
 
 /* Variables */
 :root {
-    --tiles-text-color: white;
-    --general-color: #222222;
+    --tiles-text-color: white;   /* General text color */
+    --general-color: #222222;    /* General background color */
+    --corner-size: 10px;         /* General corner rowndness */
 }
 
 /* Effects */
@@ -25,11 +26,7 @@
 }
 
 /* General styling */
-.tile_header{
-    background-color: var(--general-color);
-    color: var(--tiles-text-color);
-    height: 30px;
-}
+
 
 
 
@@ -72,6 +69,7 @@
 
 .art_control{
     float: right;
+    margin: 10px;
 }
 
 .art_container{
@@ -111,7 +109,7 @@
 }
 .art_details{
     font-size: 75%;
-    color: #c8c8c8;
+    color: black;
     height: 40px;
     font-weight: bold;
 }

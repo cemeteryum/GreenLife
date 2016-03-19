@@ -1,9 +1,9 @@
 
-  <div class="pathLocation add_shadow">
-    <p>LISTING CHALLENGES</p> 
-  </div>  
+<div class="pathLocation add_shadow">
+  <p>LISTING CHALLENGES</p> 
+</div>  
 
-
+<!-- If logged in add challenge -->
 <% if logged_in? %>
   <%= link_to new_chal_path do %>
   <div class = "col-md-12">
@@ -17,39 +17,51 @@
 <% ids = 0 %>
 <div class = "col-md-12">
   <% @chals.each do |chal| %>
-  
-<% ids += 1 %>
-  
- 
+    <% ids += 1 %>
       <div class = "chals_container add_shadow add_hover" id = <%= ids %>>
         
-        <div class = "tile_header">
-          <% if logged_in? && (current_user == chal.user || current_user.admin?) %>
-            <div class = "art_control">
-              <%= link_to edit_chal_path(chal) do %>
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-              <% end %>
-              <%= link_to chal, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-              <% end %>
+        <!-- If logged in or admin edit / delete challenge -->
+        <% if logged_in? && (current_user == chal.user || current_user.admin?) %>
+          <div class = "art_control">
+            <%= link_to edit_chal_path(chal) do %>
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+            <% end %>
+            <%= link_to chal, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            <% end %>
+          </div>
+        <% end %>
+          
+        
+        <%= link_to chal.cat.name, cat_chals_path(chal.cat), :class=> "label label-primary pull-right", :style => "color: white;" %>
+         
+        <%= link_to chal do %>
+        <div>
+          
+          <div class = "tile_header">
+            <div class = "">
+              <div><div class = "how_i">Let's treat </div><div class = "treat"><%= chal.name %></div></div>
             </div>
-          <% end %>
-          <div class = "">
-            <%= link_to "How I treat: "+chal.name, chal %>
-            <br />
-            <%= link_to chal.cat.name, cat_chals_path(chal.cat), :class=> "label label-primary pull-right", :style => "color: white" %>
+          </div>
+  
+          <div class="tile_description">
+            <p><b>Treatment</b> <%= " : "+chal.reg.split[0...40].join(' ')+" ... " %></p>
+          </div>
+          
+          
+          <div class = "tile_duration">
+            <p><b><%= "Duration: "+(chal.dur).to_s+" day(s)" %></b></p>
           </div>
         </div>
+        <% end %>
         
-        <div>
-          <%= "Treatment: "+chal.reg %>
-          <br />
-          <%= "Duration: "+(chal.dur).to_s+" day(s)" %>
-        </div>
-        <div class = "t_details pull-left">
-            by: <%= chal.user.username %>, <%= time_ago_in_words(chal.created_at) %> ago <br />last updated: <%= time_ago_in_words(chal.updated_at) %> ago
-        </div>
-          <div class = "pull-right">
+        <%= link_to chal do %>
+          <div class = "tile_details pull-left">
+                by: <%= chal.user.username %>, <%= time_ago_in_words(chal.created_at) %> ago, last updated <%= time_ago_in_words(chal.updated_at) %> ago
+          </div>
+        <% end %>
+        
+        <div class = "pull-right" style = "margin-right: 10px;">
             <%= link_to like_chal_path(chal, like: true), method: :post do %>
               <i class="glyphicon glyphicon-thumbs-up"></i>
             <% end %>
@@ -61,10 +73,10 @@
             
             <%= chal.thumb_dw_total %> 
             &nbsp
-            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= chal.comments %> 
+            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= chal.comments %>
           </div>
+        
       </div>
-   
     
     <script> document.getElementById(<%= ids %>).style.backgroundColor = "#" + rdmColor(<%= chal.name.size %>); </script>
     
