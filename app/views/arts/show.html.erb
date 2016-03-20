@@ -1,6 +1,5 @@
 <div class = "show_title">
   
-  
   <%= @art.title %> 
   <div style="float: right; font-size: 10px; color: #add12f; letter-spacing: 2px;"> 
     <% if logged_in? && (current_user == @art.user || current_user.admin?) %>
@@ -8,6 +7,7 @@
     <% end %>
     <%= link_to 'Back', arts_path %>created by: <%= @art.user.username %> 
   </div>
+  
 </div>
 
 <!-- Implementeaza imagine pentru fiecare articol -->
