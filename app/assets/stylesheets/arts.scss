@@ -116,3 +116,101 @@
     margin-right: 5px;
 }
 
+/*Clean*/
+
+.new_css{
+	background-color: red;
+	height: 350px;
+	
+}
+
+.tile_text{
+	background-color: white;
+	color: black;
+	height: 100px;
+	padding: 5px;
+	width: 100%;
+}
+
+
+.tile_body{
+	padding: 0;
+	width: 100%;
+	overflow: hidden;
+}
+
+.tile_picture{
+	float: left;
+	height: 250px;
+	width: 94%;
+	background-color: silver;
+}
+
+.tile_tag{	
+	position: absolute;
+    top: 100px;
+    left: 0;
+	background-color: white;
+	color: black;
+	width: 125px;
+	height: 25px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 25px;
+	margin-left: 0px;
+	margin-top: 0px;	
+}
+
+.tile_author{
+	position: absolute;
+    bottom: 0;
+    left: 0;
+	background-color: white;
+	width: 125px;
+	height: 25px;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 25px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	color: black;
+}
+
+.tile_controls{	
+	float: right; 
+	height: 250px;
+	width: 6%;
+
+}
+
+.like, .dislike, .comments, .when{
+	width: 100%;
+	float: left;
+	height: 35px;
+	font-size: 75%;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 35px;
+	color: white;
+    border-bottom: 1px solid silver;
+    
+}
+.read_more{	
+	background-color: #1a3b64;
+	width: 100%;
+	float: left;
+	height: 110px;
+	
+}
+
+.like, .dislike {
+	background-color: black;
+}
+.when{
+	background-color: #434343;
+	font-size: 65%;
+	height: 40px;
+}
+.comments{
+	background-color: #818181;
+}
