@@ -40,11 +40,7 @@
                 <small><td>Created by: <%= rep.user.username %>, <%= time_ago_in_words(rep.created_at) %> ago, last updated: <%= time_ago_in_words(rep.updated_at) %> </td></small>
             <% end %>
             <% end %>
-<<<<<<< HEAD
-      <% if logged_in? %>
-=======
-    
->>>>>>> 85c605cb2e57abdc3d88b2e6318f287b0642a9cc
+  <% if logged_in? %>
       <%= form_for([@chal, @chal.hits.build]) do |f| %>
         <%= f.hidden_field :p_id, :value => com.id %>
         <div class="field">
@@ -55,17 +51,12 @@
         <%= f.submit %>
         </div>
         <% end %>
-<<<<<<< HEAD
       <% end %>
   </p>
 <% end %>
 
 <% if logged_in? %>
-=======
-  </p>
-<% end %>
 
->>>>>>> 85c605cb2e57abdc3d88b2e6318f287b0642a9cc
 <h2>Add a comment:</h2>
 <%= form_for([@chal, @chal.hits.build]) do |f| %>
   <%= f.hidden_field :p_id, :value => 0 %>
@@ -77,10 +68,9 @@
     <%= f.submit %>
   </div>
 <% end %>
-<<<<<<< HEAD
+
 <% end %>
-=======
->>>>>>> 85c605cb2e57abdc3d88b2e6318f287b0642a9cc
+
 
 <%= link_to 'Edit', edit_chal_path(@chal) %> |
 <%= link_to 'Back', chals_path %>

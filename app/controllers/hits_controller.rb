@@ -74,7 +74,6 @@ class HitsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def hit_params
       params.require(:hit).permit(:text, :user_id, :chal_id, :p_id)
-<<<<<<< HEAD
     end
     def require_same_user
 			unless current_user == @chal.user or current_user.admin?
@@ -87,7 +86,5 @@ class HitsController < ApplicationController
         flash[:danger] = "Please log in."
         redirect_to login_url
       end
-=======
->>>>>>> 85c605cb2e57abdc3d88b2e6318f287b0642a9cc
     end
 end
