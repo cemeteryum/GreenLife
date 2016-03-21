@@ -7,9 +7,12 @@
 
 /* Variables */
 :root {
-    --tiles-text-color: white;   /* General text color */
+    --tiles-text-color: black;   /* General text color */
+    --tiles-bg-color: white;     /* Tile bacground color*/ 
     --general-color: #222222;    /* General background color */
     --corner-size: 10px;         /* General corner rowndness */
+    --link-visited-color: black; /* General visited link color*/
+    --link-hover-color: #afd330; /* General hover link color*/
 }
 
 /* Effects */
@@ -115,8 +118,8 @@
 }
 
 .custom_margin{
-    margin-top: 15px;
-    margin-bottom: 15px;
+    
+    margin-bottom: 40px;
 }
 
 .art_container .cover{
@@ -143,24 +146,28 @@
     
 }
 
-a:link {
+
+
+a {
+    
+  text-decoration: none;
+  color: black;
+
+  &:visited {
+    color: var(--link-visited-color);
     text-decoration: none;
-    color: white;
+  }
+
+  &:hover {
+    color: var(--link-hover-color);
+    text-decoration: none;
+  }
+  &:active{
+    color:black;
+    text-decoration: none;
+  }
 }
 
-a:visited {
-    text-decoration: none;
-    color: white;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: none;
-    color: white;
-}
 
 .xbottomFooter{
     background-color: #222222;

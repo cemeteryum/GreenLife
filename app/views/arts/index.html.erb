@@ -1,31 +1,26 @@
 
-    <div class="pathLocation add_shadow">
-      <p>LISTING ARTICLES</p> 
-    </div>
-
-
-<% rd = image_path("read_more.png") %>
-
-<% if logged_in? %>
-  <div class = "col-md-4 custom_margin mid">
-    <% ptth = image_path("add.jpg") %>
-      <div class = "art_container " style="background: url(<%= ptth %>) center center; background-size: cover;">
-      <%= link_to new_art_path do %>
-        <div class = "cover" style="background-color: #222222; padding-top: 50px;"></div>
-              <p>Add article</p>
-        </div>
-      <% end %>
+<div class="pathLocation custom_margin ">
+  <div class = "location_name">
+    LISTING ARTICLES
   </div>
-<% end %>
+  <% if logged_in? %>
+    <%= link_to new_art_path do %>
+      <div class = "add_link add_hover">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add article
+      </div>
+    <% end %>
+  <% end %>
+</div>
  
-<div class = "col-md-8 ">
+<% rd = image_path("read_more.png") %>
+<% author = image_path("author.png") %>
+ 
+<div class = "col-md-8">
 
 <!-- For each article draw the following-->
 <% @arts.each do |art| %>
-
-
   
-  	<div class = "row new_css add_shadow">
+  	<div class = "row new_css custom_margin ">
   	  
 <!-- Article header-->
   		<div class = "tile_text">
@@ -49,7 +44,7 @@
   			
   			<!-- Article description -->
   			<div class = "tile_text">
-  			  <%= art.description.split[0...40].join(' ')+" ... " %>
+  			  <%= art.description.split[0...30].join(' ')+" ... " %>
         </div>
         
 <!-- Article Body -->
@@ -61,7 +56,7 @@
     					  <%= art.cat.name %>
     				</div>
     				<div class = "tile_author">
-      				by: <%= art.user.username %>
+      				by <b> <%= art.user.username %> </b>
     				</div>
     			</div>
   			<% end%>
@@ -83,13 +78,28 @@
   				<div class = "comments"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= art.comments %></span> </div>
   				<div class = "when"> 12 March </div>
   				<%= link_to art do %>
-  				  <div class = "read_more add_hover" style="background: url(<%= rd %>) center no-repeat; background-size: 70% 85%;"></div>			
+  				  <div class = "read_more add_hover" style="background: url(<%= rd %>) center no-repeat; background-size: 100% 100%;"></div>			
   			  <% end%>
   			</div>
-  			
   		</div>
   	</div>
 
 <% end %>
 
 </div>
+
+ <!-- Ads Placeholder (replace later with dynamic not on each page)-->
+<div class = "col-md-4" style= "margin-right: 0px; padding-right: 0px;">
+  <div class = "add_css">
+    <div class = "add_1 ">
+      PLACE HOLDER
+    </div>
+    <div class = "add_3 ">
+      PLACE HOLDER
+    </div>
+    <div class = "add_2 ">
+      PLACE HOLDER
+    </div>
+  </div>
+</div>
+ 
