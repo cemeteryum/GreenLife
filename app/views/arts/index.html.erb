@@ -46,15 +46,19 @@
   			<div class = "tile_text">
   			  <%= art.description.split[0...30].join(' ')+" ... " %>
         </div>
-        
-<!-- Article Body -->
+  
+
+
   		</div>
+<!-- Article Body -->  		
   		<div class = "tile_body">
   		  <%= link_to art do %>
     			<div class = "tile_picture add_hover" style = "background: url(http://medimoon.com/wp-content/uploads/2014/02/mate-dna-dnk-medical-genes-photos-pictures-555395.jpg) center; fixed; background-size: cover;">
-    				<div class = "tile_tag">
+            
+            <div class = "tile_tag">
     					  <%= art.cat.name %>
     				</div>
+
     				<div class = "tile_author">
       				by <b> <%= art.user.username %> </b>
     				</div>

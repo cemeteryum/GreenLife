@@ -1,3 +1,124 @@
 // Place all the styles related to the treats controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.treat_css{
+	padding: 0px;
+	
+	background-color: white;
+}
+
+.line{
+    background-color: silver;
+    width: 80%;
+    height: 1px;
+    float: left;
+    margin-top: 10px;
+}
+
+.treat_controls{	
+	float: left; 
+	height: 30px;
+	width: 100%;
+}
+
+.like_treat, 
+.dislike_treat,
+.comments_treat,
+.when_treat,
+.author_treat,
+.tag_treat,
+.positive,
+.negative {
+    
+	float: right;
+	font-size: 75%;
+	vertical-align: middle;
+	text-align: center;
+	line-height: 30px;
+	color: white;
+	border-left: 1px solid silver;
+}
+
+.like_treat, 
+.dislike_treat,
+.comments_treat{
+    width: 8%;
+}
+
+.author_treat, .when_treat{
+    width: 20%
+}
+
+.tag_treat{
+    width: 16%;
+}
+
+.positive,
+.negative {
+    width: 20%;
+}
+
+.negative{
+    text-decoration: line-through;
+}
+
+.like_treat, .dislike_treat, .author_treat {
+	background-color: black;
+}
+
+.when_treat{
+	background-color: #434343;
+	font-size: 65%;
+	height: 30px;
+}
+
+.comments_treat, .tag_treat{
+    background-color: #818181;
+}
+.tag_treat{
+    color: white;
+    font-size: 80%;
+}
+
+.positive {
+    background-color: #94c545;
+}
+.negative{
+    background-color: #c54545;
+}
+
+.treat_text{
+	background-color: white;
+	min-height: 100px;
+	width: 100%;
+	padding: 15px;
+
+}
+
+.treat_title{
+    height: 20px;
+    width: 80%;
+    margin-bottom: 5px;
+    
+}
+
+.treat_desc{
+    width: 100%;
+    font-size: 90%;
+    color: black;
+    padding-left: 15px;
+	padding-right: 15px;
+}
+
+.how_i{
+    color: silver;
+    text-decoration: none;
+    font-size: 85%;
+    letter-spacing: -0.5px;
+    float: left;
+    padding-right: 20px;
+    padding-top: 2px;
+
+    height: 15px;
+}
