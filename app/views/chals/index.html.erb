@@ -1,14 +1,16 @@
-<div class="pathLocation custom_margin ">
-  <div class = "location_name">
-    LISTING CHALLENGES
-  </div>
-  <% if logged_in? %>
-    <%= link_to new_chal_path do %>
-      <div class = "add_link add_hover">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add challenge
-      </div>
+<div class="col-md-12">
+  <div class="col-md-12 pathLocation custom_margin">
+    <div class = "location_name">
+      LISTING CHALLENGES
+    </div>
+    <% if logged_in? %>
+      <%= link_to new_chal_path do %>
+        <div class = "add_link add_hover">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add challenge
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <div class = "col-md-8">
@@ -16,7 +18,7 @@
 <!-- For each challenge draw the following-->
 <% @chals.each do |chal| %>
   
-  	<div class = "row treat_css custom_margin">
+  	<div class = "treat_css custom_margin">
   	  
 <!-- Treat symtom -->
   		<div class = "treat_text">
@@ -85,8 +87,8 @@
 </div>
 
  <!-- Ads Placeholder (replace later with dynamic not on each page)-->
-<div class = "col-md-4" style= "margin-right: 0px; padding-right: 0px;">
-  <div class = "add_css">
+<div class = "col-md-4">
+
     <div class = "add_1 ">
       PLACE HOLDER
     </div>
@@ -96,6 +98,6 @@
     <div class = "add_2 ">
       PLACE HOLDER
     </div>
-  </div>
+
 </div>
  

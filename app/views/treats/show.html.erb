@@ -1,24 +1,78 @@
-<p>
-  <strong>How i treat:</strong>
-  <%= @treat.name %>
-</p>
+<div class = "col-md-8">
 
-<p>
-  <strong>Medically diagnosed:</strong>
-  <%= @treat.md ? "Yes":"No" %>
-</p>
+<!-- Article Controls -->
 
-<p>
-  <strong>Symptoms:</strong>
-  <%= @treat.sym %>
-</p>
-
-<p>
-  <strong>Treatment:</strong>
-  <%= @treat.reg %>
-</p>
-
-<h2>Comments</h2>
+	<div class = "treat_controls custom_margin">
+	  
+	  <%= link_to like_treat_path(@treat, like: true), method: :post do %>
+			<div class = "like_treat add_hover">
+          <i class="glyphicon glyphicon-thumbs-up"></i>
+        <%= @treat.thumb_up_total %> 
+      </div>
+    <% end %>
+    <%= link_to like_treat_path(@treat, like: false), method: :post do %>
+			<div class = "dislike_treat add_hover">
+          <i class="glyphicon glyphicon-thumbs-down"></i>
+        <%= @treat.thumb_dw_total %>
+			</div>
+		<% end %>
+		
+		<div class = "comments_treat"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= @treat.comments %></span> </div>
+		
+		<div class = "when_treat"> 12 March </div>
+		
+		<div class = "author_treat">
+			by <b> <%= @treat.user.username %> </b>
+	  </div>
+		
+		<%= link_to @treat.cat do %>
+		<div class = "tag_treat add_hover">
+		  <b><%= @treat.cat.name %></b>
+		</div>
+		<% end %>
+		
+		<% if @treat.md %>
+		  <div class = "positive">
+		    DIAGNOSED 
+		  </div>
+		<% else %>
+		  <div class = "negative">
+		    DIAGNOSED 
+		  </div>
+		<% end %>
+		
+	</div>
+    	  
+  <!-- Treat symtom -->
+  <div class = "row">
+  	<div class = " col-md-6">
+  
+        <!-- Treat title -->
+        <div class = "show_treat_title">
+    		  How I treat <b><%= @treat.name %></b>
+    		</div>
+    		<!-- Treat Symptom -->
+    		<div class = "show_treat_sym">
+    		  <%= @treat.sym %>
+        </div>
+  	</div>
+      		
+    <!-- Treatment -->
+    <div class = "col-md-6">
+  		<div class = "show_treat_title"> <i><b>Treat</b>ment</i></div>
+  		
+  			<!-- Treatment -->
+  		<div class = "show_treat_sym">
+  		  <%= @treat.reg %>
+      </div>
+      
+    </div>
+  </div>
+  
+  <div style = "margin-bottom: 5px; background-color: black; color: white; font-size: 20px; font-weight: bold; letter-spacing: -2px; padding: 10px; margin-top: 30px; margin-bottom: 30px;">
+    COMMENTS
+  </div>
+  
 <% @comms.each do |com| #@treat.coms.each do |com| %>
   <p>
     <b>Comment:</b>
@@ -74,3 +128,22 @@
 
 <%= link_to 'Edit', edit_treat_path(@treat) %> |
 <%= link_to 'Back', treats_path %>
+
+
+</div>  			
+
+
+ <!-- Ads Placeholder (replace later with dynamic not on each page)-->
+<div class = "col-md-4">
+
+    <div class = "add_1 ">
+      PLACE HOLDER
+    </div>
+    <div class = "add_3 ">
+      PLACE HOLDER
+    </div>
+    <div class = "add_2 ">
+      PLACE HOLDER
+    </div>
+
+</div>

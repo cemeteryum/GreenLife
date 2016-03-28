@@ -1,15 +1,16 @@
-
-<div class="pathLocation custom_margin ">
-  <div class = "location_name">
-    LISTING ARTICLES
-  </div>
-  <% if logged_in? %>
-    <%= link_to new_art_path do %>
-      <div class = "add_link add_hover">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add article
-      </div>
+<div class="col-md-12">
+  <div class="col-md-12 pathLocation custom_margin">
+    <div class = "location_name">
+      LISTING ARTICLES
+    </div>
+    <% if logged_in? %>
+      <%= link_to new_art_path do %>
+        <div class = "add_link add_hover">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add article
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
  
 <% rd = image_path("read_more.png") %>
@@ -20,7 +21,7 @@
 <!-- For each article draw the following-->
 <% @arts.each do |art| %>
   
-  	<div class = "row new_css custom_margin ">
+<div class = "custom_margin">
   	  
 <!-- Article header-->
   		<div class = "tile_text">
@@ -46,24 +47,33 @@
   			<div class = "tile_text">
   			  <%= art.description.split[0...30].join(' ')+" ... " %>
         </div>
-  
-
 
   		</div>
+  		
 <!-- Article Body -->  		
   		<div class = "tile_body">
   		  <%= link_to art do %>
     			<div class = "tile_picture add_hover" style = "background: url(http://medimoon.com/wp-content/uploads/2014/02/mate-dna-dnk-medical-genes-photos-pictures-555395.jpg) center; fixed; background-size: cover;">
             
-            <div class = "tile_tag">
+            <div class = "tile_cat">
     					  <%= art.cat.name %>
     				</div>
+    			
+    			 <!-- Article Tags -->
+        		<div class = "tile_tags">
+        		  <% art.tags.each do |tag| %>
+          		  <div class = "tile_tag">
+          		    <i>Tag1</i>
+          		  </div>
+        		  <% end %>
+        		</div>
 
     				<div class = "tile_author">
       				by <b> <%= art.user.username %> </b>
     				</div>
     			</div>
   			<% end%>
+  				
   			
 <!-- Article Controls -->
   			<div class = "tile_controls">
@@ -86,15 +96,19 @@
   			  <% end%>
   			</div>
   		</div>
-  	</div>
+  		
+
+  		
+  		
+</div>
 
 <% end %>
 
 </div>
 
  <!-- Ads Placeholder (replace later with dynamic not on each page)-->
-<div class = "col-md-4" style= "margin-right: 0px; padding-right: 0px;">
-  <div class = "add_css">
+<div class = "col-md-4">
+
     <div class = "add_1 ">
       PLACE HOLDER
     </div>
@@ -104,6 +118,6 @@
     <div class = "add_2 ">
       PLACE HOLDER
     </div>
-  </div>
+
 </div>
  

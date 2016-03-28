@@ -21,4 +21,8 @@ class Art < ActiveRecord::Base
     self.coms.where(p_id: 0).size
   end
   
+  def tags
+    self.tag_ids
+  end
+  
 end

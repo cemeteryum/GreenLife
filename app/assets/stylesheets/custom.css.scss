@@ -11,7 +11,7 @@
     --tiles-bg-color: white;     /* Tile bacground color*/ 
     --general-color: #222222;    /* General background color */
     --corner-size: 10px;         /* General corner rowndness */
-    --link-visited-color: black; /* General visited link color*/
+    --link-visited-color: silver; /* General visited link color*/
     --link-hover-color: #afd330; /* General hover link color*/
 }
 
@@ -30,8 +30,23 @@
 
 /* General styling */
 
+.pathLocation{ /* Used on index pages */
+    background-color: #222222;
+    color: white;
+    width: 100%;
+    height: 40px;
+    letter-spacing: -1px;
+    font-weight: bold;
+    font-size: 20px;
+ /* border-top-left-radius: var(--corner-size); */
+ /* border-top-right-radius: var(--corner-size); */
+}
 
-
+.location_name{
+    width: 60%;
+    float: left;
+    padding-top: 10px;
+}
 
 
 
@@ -118,8 +133,7 @@
 }
 
 .custom_margin{
-    
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .art_container .cover{
@@ -151,7 +165,7 @@
 a {
     
   text-decoration: none;
-  color: black;
+  color: silver;
 
   &:visited {
     color: var(--link-visited-color);
@@ -256,22 +270,135 @@ body > #wrap {
     display: block;
 }
 
-.placeHolder1{
-    position: absolute;
-    min-height: 60%;
-    width: 200px;
-    left: 25px;
-    top: 140px;
-    margin-left: 25px;
-    /*background-color: #4e4e4e;*/
+
+/* Comments section */
+
+.comments_label{
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: -2px;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
-.placeHolder2{
-    position: absolute;
-    min-height: 60%;
-    width: 200px;
-    right: 25px;
-    top: 140px;
-    margin-left: 25px;
-   /* background-color: #4e4e4e;*/
+.text_area_css{
+    min-height: 100px;
+    border: 1px white solid;
+    border-radius: 0px;
+    resize: vertical;
+    width: 100%;
+    position: relative;
 }
+
+.your_comment{
+    font-weight: bold;
+    font-size: 8px;
+    background-color: #afd330;
+    color: black;
+    padding-left: 5px;
+    height: 18px;
+}
+
+.add_comment_button{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 20;
+    border-radius: 0px;
+    color: black;
+    background: #afd330;
+    font-weight: bold;       
+    font-size: 75%;
+    -webkit-border-top-right-radius: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.tmp_relative{
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.collapse_btn{
+    border-radius: 0px;
+    height: 20px;
+    float: left;
+    margin-right: 10px;
+}
+
+.com_author{
+    background-color: #7e9336;
+    color: white;
+    height: 20px;
+    font-weight: bold;
+    width: 100px;
+    float: left;
+    vertical-align: middle;
+	text-align: center;
+	line-height: 20px;
+	border-left: 1px silver;
+	margin-right: 10px;
+}
+
+.com_date{
+    background-color: white;
+    color: black;
+    height: 20px;
+    font-weight: bold;
+    width: 200px;
+    float: left;
+    vertical-align: middle;
+	text-align: center;
+	line-height: 20px;
+	border-left: 1px silver;
+	margin-right: 10px;
+	opacity: 0.5;
+}
+
+.comment_section{
+    width: 100%;
+    color: white;
+    background-color: #222222;
+    padding: 20px;
+}
+
+.post-comments {
+    padding-bottom: 10px;
+    margin: 5px 0 5px;
+}
+
+.post-comments .comment-meta {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 5px;
+}
+
+.post-comments .media {
+    margin-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.post-comments .media-heading {
+    font-size: 12px;
+    color: grey;
+    margin-bottom: 15px;
+}
+
+.post-comments .comment-meta a {
+    font-size: 12px;
+    color: grey;
+    font-weight: bolder;
+    margin-right: 5px;
+}
+
+.tmp_fx {
+    padding-right: 10px;
+}
+
+/* End Comments Section */
