@@ -1,74 +1,211 @@
-<p>
-  <strong>Let's treat:</strong>
-  <%= @chal.name %>
-</p>
+<div class = "col-md-8">
 
-<p>
-  <strong>Treatment:</strong>
-  <%= @chal.reg %>
-</p>
+<!-- Article Controls -->
+  
+	<div class = "index_treat_controls" style = "margin-bottom: 15px;">
+	  
+	  <div class = "positive">
+      <%= (@chal.dur).to_s %> day(s) 
+  	</div>
+		
+		<%= link_to @chal.cat do %>
+			<div class = "tag_treat add_hover">
+			  <b><%= @chal.cat.name %></b>
+			</div>
+		<% end %>
+		
+		<div class = "author_treat">
+			by <b> <%= @chal.user.username %> </b>
+	  </div>
+	  
+	  <div class = "when_treat"> 12 March </div>
 
-<p>
-  <strong>Duration:</strong>
-  <%= @chal.dur %>
-</p>
+		<div class = "comments_treat"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= @chal.comments %></span> </div>
 
-<h2>Comments</h2>
-<% @comms.each do |com| #@treat.coms.each do |com| %>
-  <p>
-    <b>Comment:</b>
-    <%= com.text %> |
-    <% if logged_in? && (current_user == com.user || current_user.admin?) %>
-    <%= link_to 'Destroy Comment', [com.chal, com],
-               :confirm => 'Are you sure?',
-               :method => :delete %> |
+		<%= link_to like_treat_path(@chal, like: true), method: :post do %>
+			<div class = "like_treat add_hover">
+          <i class="glyphicon glyphicon-thumbs-up"></i>
+        <%= @chal.thumb_up_total %> 
+      </div>
     <% end %>
-    <small><td>Created by: <%= com.user.username %>, <%= time_ago_in_words(com.created_at) %> ago, last updated: <%= time_ago_in_words(com.updated_at) %> </td></small>
-    
-        <% @reps.each do |rep| #@treat.reps.each do |rep| %>
-          <% if rep.p_id == com.id%>
-            <p>
-                <b>Reply:</b>
-                <%= rep.text %> |
-                <% if logged_in? && (current_user == rep.user || current_user.admin?) %>
-                <%= link_to 'Destroy reply', [rep.chal, rep],
-                           :confirm => 'Are you sure?',
-                           :method => :delete %> |
-                <% end %>
-                <small><td>Created by: <%= rep.user.username %>, <%= time_ago_in_words(rep.created_at) %> ago, last updated: <%= time_ago_in_words(rep.updated_at) %> </td></small>
-            <% end %>
-            <% end %>
-  <% if logged_in? %>
-      <%= form_for([@chal, @chal.hits.build]) do |f| %>
-        <%= f.hidden_field :p_id, :value => com.id %>
-        <div class="field">
-        <%= f.label :text %><br />
-        <%= f.text_area :text %>
+    <%= link_to like_treat_path(@chal, like: false), method: :post do %>
+			<div class = "dislike_treat add_hover">
+          <i class="glyphicon glyphicon-thumbs-down"></i>
+        <%= @chal.thumb_dw_total %>
+			</div>
+		<% end %>
+		
+	</div>
+    	  
+  <!-- Treat symtom -->
+  <div class = "row">
+  	<div class = " col-md-12">
+  
+        <!-- Treat title -->
+        <div class = "show_treat_title">
+    		  <div class = "how_i" style = "width: 85px;">How I treat</div> <div class = "index_treat_title"><b><%= @chal.name %></b></div>
+    		</div>
+    		<!-- Treat Symptom -->
+    		<div class = "show_treat_sym">
+    		  <%= @chal.reg %>
         </div>
-        <div class="actions">
-        <%= f.submit %>
+  	</div>
+  </div>
+  
+ <div class = "comments_label">
+    COMMENTS
+  </div>
+  
+  <!-- Add comment section -->
+  <% if logged_in? %>
+    <div class = "tmp_relative"> <!-- For relative position of the add button -->
+      <%= form_for([@chal, @chal.hits.build]) do |f| %>
+        <div class="">
+          <%= f.hidden_field :p_id, :value => 0 %>
+          <div class = "your_comment">
+            <label for="comment">YOUR COMMENT</label>
+          </div>
+          <div class="">
+            <%= f.text_area :text, :class => "form-control text_area_css", :rows => "3", :cols => "30" %>
+          </div>
+        </div>
+        <div class="">
+        </div>
+          <%= f.submit "ADD COMMENT", :class => "btn add_comment_button add_hover" %>
+      <% end %>
+    </div>
+  <% end %>
+  <!-- End of Add comment section -->
+     
+  <div class="comment_section">
+    <div class="post-comments">
+      <div class="row">
+        
+      <!-- Comment in media -->
+        
+      <% @comms.each do |com| #@art.coms.each do |com| %>
+      
+        <!-- Each Comment -->
+        <div class="media">
+          
+          <!-- Colapse for comment -->
+          <div class="media-heading">
+            <button class="btn btn-default btn-xs collapse_btn" type="button" data-toggle="collapse" data-target="#collapse<%= com.id %>" aria-expanded="false" aria-controls="collapseExample">
+              <span class="glyphicon glyphicon-minus glyphicon-xs" aria-hidden="true"></span>
+            </button> 
+            <div class="com_author">
+              <%= com.user.username %>
+            </div>
+            <div class = "com_date">
+              <%= time_ago_in_words(com.created_at) %> ago 
+            </div>                
+            
+              <% if logged_in? && (current_user == com.user || current_user.admin?) %>
+                <%= link_to [com.treat, com], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <span class="glyphicon glyphicon-remove pull-right tmp_fx" aria-hidden="true"></span>
+                <% end %>
+              <% end %>
+          </div>
+          
+          </br>
+  
+          <!-- Colapse everything from here down -->
+          <div class="panel-collapse collapse in" id="collapse<%= com.id %>">
+  
+            <!-- Actual comment  -->
+            <div class="media-body">
+              <p><%= com.text %></p>
+              
+              <% if logged_in? %>
+              <!-- Reply form for comm ID -->
+              <div class="comment-meta">
+                <span>
+                  <a class="" role="button" data-toggle="collapse" href="#reply<%= com.id %>" aria-expanded="false" aria-controls="collapseExample">Reply</a>
+                </span>
+                <!-- Add reply section -->
+                <div class = "tmp_relative collapse" id="reply<%= com.id %>"> <!-- For relative position of the add button -->
+                  <%= form_for([@treat, @treat.reps.build]) do |f| %>
+                      <%= f.hidden_field :p_id, :value => com.id %>
+                      <div class = "your_comment">
+                        <label for="comment">YOUR COMMENT</label>
+                      </div>
+                      
+                      <%= f.text_area :text, :class => "form-control text_area_css", :rows => "3", :cols => "30" %>
+                    
+                      <%= f.submit "ADD REPLY", :class => "btn add_comment_button add_hover" %>
+                  <% end %>
+                </div>
+                <!-- End of Add reply section -->
+                
+              </div>
+              <!-- End of reply form -->
+              <% end %>
+              
+              <!-- All replays for comm ID -->
+              <% @reps.each do |rep| #@art.reps.each do |rep| %>
+                <% if rep.p_id == com.id%>
+                  <div class="media" style = "margin-left: 15px; border-left: 1px silver;">
+                    
+                    <!-- Colapse reply -->
+                    <div class="media-heading">
+                      <button class="btn btn-default btn-collapse btn-xs collapse_btn" type="button" data-toggle="collapse" data-target="#collapseReply<%= rep.id %>" aria-expanded="false" aria-controls="collapseExample">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                      </button> 
+                      <div class="com_author">
+                        <%= rep.user.username %>
+                      </div> 
+                      <div class = "com_date">
+                        <%= time_ago_in_words(rep.created_at) %> ago
+                      </div>
+                      
+                      <% if logged_in? && (current_user == com.user || current_user.admin?) %>
+                        <%= link_to [rep.treat, rep], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                          <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
+                        <% end %>
+                      <% end %>
+                      
+                    </div>
+                    
+                    </br>
+      
+                    <div class="panel-collapse collapse in" id="collapseReply<%= rep.id %>">
+    
+                      <div class="media-body">
+                        <p><%= rep.text %></p>
+                      </div>
+                      
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+              <!-- End of replys -->
+              
+            </div>
+          </div>
         </div>
         <% end %>
-      <% end %>
-  </p>
-<% end %>
-
-<% if logged_in? %>
-
-<h2>Add a comment:</h2>
-<%= form_for([@chal, @chal.hits.build]) do |f| %>
-  <%= f.hidden_field :p_id, :value => 0 %>
-  <div class="field">
-    <%= f.label :text %><br />
-    <%= f.text_area :text %>
+        <!-- End of Comment -->
+  
+      <!-- End of Comment Template -->
+      </div>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<% end %>
 
 
-<%= link_to 'Edit', edit_chal_path(@chal) %> |
-<%= link_to 'Back', chals_path %>
+</div>  			
+
+
+ <!-- Ads Placeholder (replace later with dynamic not on each page)-->
+<div class = "col-md-4">
+
+    <div class = "add_1 ">
+      PLACE HOLDER
+    </div>
+    <div class = "add_3 ">
+      PLACE HOLDER
+    </div>
+    <div class = "add_2 ">
+      PLACE HOLDER
+    </div>
+
+</div>

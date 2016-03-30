@@ -1,23 +1,62 @@
-// Place all the styles related to the treats controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-.treat_css{
-	padding: 0px;
-	
-	background-color: white;
+/* Index Treats */
+
+
+.index_treat_tile{
+    min-height: 150px;
+    margin-bottom: 30px;
+    background-color: black;
+}
+
+.index_treat_text{
+	background-color: var(--general-bg-color);
+	color: var(--tiles-text-color);
+	min-height: 50px;
+	padding: 15px;
+	position: relative;
+}
+
+.index_treat_title{
+    min-height: 25px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.index_treat_text .edit_delete_control{
+    float: right;
+    font-size: 75%;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+}
+
+.index_treat_desc{
+    width: 100%;
+    font-size: 90%;
+    padding: 10px;
+}
+
+.how_i{
+    color: silver;
+    text-decoration: none;
+    font-size: 85%;
+    letter-spacing: -0.5px;
+    float: left;
+    text-align: left;
+    padding-top: 2px;
+    height: 15px;
+    width: 14%;
 }
 
 .line{
     background-color: silver;
-    width: 87%;
+    width: 80%;
     height: 1px;
-    float: right;
+    float: left;
     margin-top: 10px;
 }
 
-.treat_controls{	
-	float: left; 
+.index_treat_controls{	
 	height: 30px;
 	width: 100%;
 }
@@ -31,8 +70,8 @@
 .positive,
 .negative {
     
-	float: right;
-	font-size: 75%;
+	float: left;
+	font-size: 70%;
 	vertical-align: middle;
 	text-align: center;
 	line-height: 30px;
@@ -82,63 +121,40 @@
     font-size: 80%;
 }
 
-.positive {
+.positive{
     background-color: #94c545;
 }
 .negative{
     background-color: #c54545;
 }
 
-.treat_text{
-	background-color: white;
-	min-height: 100px;
-	padding: 15px;
 
-}
-
-.treat_title{
-    height: 20px;
-    width: 80%;
-    margin-bottom: 5px;
-    
-}
-
-.treat_desc{
-    width: 100%;
-    font-size: 90%;
-    color: black;
-    padding-left: 15px;
-	padding-right: 15px;
-}
-
-.how_i{
-    color: silver;
-    text-decoration: none;
-    font-size: 85%;
-    letter-spacing: -0.5px;
-    float: left;
-    padding-right: 20px;
-    padding-top: 2px;
-    height: 15px;
-}
 
 /* Show Treat */
 
 .show_treat_title, .show_treat_sym{
-    color: black;
-    background-color: white;
+
     width: 100%;
     padding: 10px;
 }
 
 .show_treat_title{
     font-size: 120%;
-    height: 40px;
+    height: 50px;
 }
 
 .show_treat_sym{
-    min-height: 220px;
+
     font-size: 90%;
+    background-color: var(--tiles-bg-color);
+    color: var(--tiles-text-color);
+    width: 100%;
+    min-height: 300px;
+    padding: 20px;
+    text-align: justify;
+    text-justify: inter-word;
+    text-indent: 10px;
+    margin-bottom: 15px;
 }
 
 /* End Show Treat */

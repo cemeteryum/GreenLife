@@ -1,70 +1,22 @@
-// Place all the styles related to the arts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-.add_link{
-    float: right;
-    width: 40%;
-    text-align: center;
-    height: 40px;
-    font-size: 75%;
-    padding-top: 10px;
-}
-.add_link a:active {
-    color: white;
-}
-.add_link a:visited {
-    color: white;
-}
-
-.location_name{
-    width: 60%;
-    float: left;
-    padding-top: 10px;
-}
-
-.pathLocation{
-    background-color: #222222;
-    color: white;
-    width: 100%;
-    height: 40px;
-    letter-spacing: -1px;
-    font-weight: bold;
-    font-size: 20px;
- /* border-top-left-radius: var(--corner-size); */
- /* border-top-right-radius: var(--corner-size); */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*Clean*/
-
-.new_css{
-	padding: 0px;
-	
-	height: 350px;
-	background-color: white;
-}
+/* Index Article */
 
 .tile_text{
 	background-color: white;
 	color: black;
-	height: 100px;
+	min-height: 50px;
 	padding: 10px;
 	width: 100%;
 	font-size: 90%;
+	position: relative;
+}
+
+.tile_text .edit_delete_control{
+    float: right;
+    font-size: 86%;
+    position: absolute;
+    top: 5px;
+    right: 10px;
 }
 
 .tile_title{
@@ -167,96 +119,59 @@
 	margin-top: 5px;
 }
 
+/* END of Index Article */
 
 
+/* Show Article */
 
-.add_1{
+
+.art_show_header{
     width: 100%;
-    height: 100px;
-    background-color: var(--general-color);
-    vertical-align: middle;
-	text-align: center;
-	line-height: 100px;
- 
+    min-height: 40px;
+    /*background-color: var(--general-bg-color);*/
 }
 
-.add_2{
+.art_show_title{
     width: 100%;
-    height: 200px;
-    background-color: var(--general-color);
-    margin-top: 30px;
-    vertical-align: middle;
-	text-align: center;
-	line-height: 200px;
-}
-
-.add_3{
-    width: 100%;
-    height: 300px;
-    background-color: var(--general-color);
-    margin-top: 30px;
-    vertical-align: middle;
-	text-align: center;
-	line-height: 300px;
-}
-
-.add_css{
-    float: right;
-    width: 100%;
-}
-
-/* Show Article CLEAN */
-
-
-.show_title{
-    width: 100%;
-    height: 80px;
-    font-size: 220%;
+    min-height: 40px;
+    font-size: 150%;
     font-weight: bold;
-    letter-spacing: -2.5px;
-    padding-left: 20px;
-    padding-top: 20px;
-
-}
-.show_header{
-    width: 100%;
-    background-color: white;
+    letter-spacing: -1px;
+    /*padding: 20px;*/
 }
 
-.show_info{
-    width: 100%;
-    height: 40px;
-}
-
-.show_info .tile_author{
-    margin-top: 0px;
-    float: left;
-}
-
-.show_comms{
-    width: 20%;
-    float: left;
-    vertical-align: middle;
-	text-align: center;
-	line-height: 25px;
-}
-.show_date{
-    width: 20%;
-    float: left;
-    vertical-align: middle;
-	text-align: center;
-	line-height: 25px;
-}
-
-.show_cat{
-    width: 20%;
+.art_show_title .edit_delete_control{
     float: right;
-    vertical-align: middle;
-	text-align: center;
-	line-height: 25px;
+    font-size: 75%;
+    position: absolute;
+    top: 5px;
+    right: 20px;
 }
 
-.show_content{
+.art_show_info{
+    width: 100%;
+    min-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.art_show_info .art_show_author, .art_show_comms, .art_show_date, .art_show_cat{
+    min-width: 10%;
+    float: left;
+    vertical-align: middle;
+	text-align: center;
+	line-height: 24px;
+	padding-left: 20px;
+	padding-right: 20px;
+	min-height: 25px;
+}
+
+.art_show_info .art_show_cat{
+    background-color: black;
+    color: white;
+}
+
+.art_show_content{
     background-color: var(--tiles-bg-color);
     color: var(--tiles-text-color);
     width: 100%;
@@ -264,6 +179,7 @@
     padding: 20px;
     text-align: justify;
     text-justify: inter-word;
-    text-indent: 20px;
+    text-indent: 10px;
 }
+
 /* Show Article END */

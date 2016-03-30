@@ -32,7 +32,7 @@ class RepsController < ApplicationController
     @rep.treat = @treat
     respond_to do |format|
       if @rep.save
-        format.html { redirect_to @treat, notice: 'Rep was successfully created.' }
+        format.html { redirect_to @treat, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @rep }
       else
         format.html { redirect_to @treat, :flash => { :danger => "Text must not be blank" } }
@@ -46,7 +46,7 @@ class RepsController < ApplicationController
   def update
     respond_to do |format|
       if @rep.update(rep_params)
-        format.html { redirect_to @treat, notice: 'Rep was successfully updated.' }
+        format.html { redirect_to @treat, notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @rep }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class RepsController < ApplicationController
   def destroy
     @rep.destroy
     respond_to do |format|
-      format.html { redirect_to reps_url, notice: 'Rep was successfully destroyed.' }
+      format.html { redirect_to @treat, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,9 +76,10 @@ class RepsController < ApplicationController
       params.require(:rep).permit(:text, :user_id, :treat_id, :p_id)
     end
     def require_same_user
-			unless current_user == @chal.user or current_user.admin?
+      @treat = Treat.find(params[:treat_id])
+			unless current_user == @treat.user or current_user.admin?
 				flash[:danger] = "You can only edit your delete your own articles"
-				redirect_to chals_path
+				redirect_to treats_path
 			end
     end
     def logged_in_user

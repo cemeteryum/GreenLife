@@ -8,10 +8,10 @@
 /* Variables */
 :root {
     --tiles-text-color: black;   /* General text color */
-    --tiles-bg-color: white;     /* Tile bacground color*/ 
-    --general-color: #222222;    /* General background color */
+    --tiles-bg-color: white;     /* Tile background color*/ 
+    --general-bg-color: white; /* General background for text color */
     --corner-size: 10px;         /* General corner rowndness */
-    --link-visited-color: silver; /* General visited link color*/
+    --link-visited-color: silver;/* General visited link color*/
     --link-hover-color: #afd330; /* General hover link color*/
 }
 
@@ -26,6 +26,21 @@
     -moz-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
     -webkit-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
+}
+
+.add_link{
+    float: right;
+    width: 40%;
+    text-align: center;
+    height: 40px;
+    font-size: 75%;
+    padding-top: 10px;
+}
+.add_link a:active {
+    color: white;
+}
+.add_link a:visited {
+    color: white;
 }
 
 /* General styling */
@@ -271,6 +286,38 @@ body > #wrap {
 }
 
 
+
+
+/* Adds CSS */
+
+.add_1, .add_2, .add_3{
+    width: 100%;
+    background-color: #222222;
+    vertical-align: middle;
+	text-align: center;
+	line-height: 100px;
+	margin-bottom: 30px;
+}
+.add_1{
+    height: 100px;
+    line-height: 100px;
+}
+.add_2{
+    height: 200px;
+    line-height: 200px;
+}
+.add_3{
+    height: 300px;
+    line-height: 300px;
+}
+.add_css{
+    float: right;
+    width: 100%;
+}
+
+/* END of Adds CSS*/
+
+
 /* Comments section */
 
 .comments_label{
@@ -280,8 +327,8 @@ body > #wrap {
     font-weight: bold;
     letter-spacing: -2px;
     padding: 10px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .text_area_css{
@@ -351,7 +398,7 @@ body > #wrap {
     color: black;
     height: 20px;
     font-weight: bold;
-    width: 200px;
+    width: 170px;
     float: left;
     vertical-align: middle;
 	text-align: center;
@@ -359,6 +406,7 @@ body > #wrap {
 	border-left: 1px silver;
 	margin-right: 10px;
 	opacity: 0.5;
+	font-size: 80%;
 }
 
 .comment_section{
@@ -366,6 +414,7 @@ body > #wrap {
     color: white;
     background-color: #222222;
     padding: 20px;
+    margin-bottom: 30px;
 }
 
 .post-comments {

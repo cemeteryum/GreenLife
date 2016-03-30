@@ -32,10 +32,10 @@ class HitsController < ApplicationController
     @hit.chal = @chal
     respond_to do |format|
       if @hit.save
-        format.html { redirect_to @chal, notice: 'Hit was successfully created.' }
+        format.html { redirect_to @chal, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @hit }
       else
-        format.html { render :new }
+        format.html { render @chal, :flash => { :danger => "Text must not be blank" } }
         format.json { render json: @hit.errors, status: :unprocessable_entity }
       end
     end
@@ -46,7 +46,7 @@ class HitsController < ApplicationController
   def update
     respond_to do |format|
       if @hit.update(hit_params)
-        format.html { redirect_to @chal, notice: 'Hit was successfully updated.' }
+        format.html { redirect_to @chal, notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @hit }
       else
         format.html { render :edit }
@@ -60,7 +60,7 @@ class HitsController < ApplicationController
   def destroy
     @hit.destroy
     respond_to do |format|
-      format.html { redirect_to chals_url(@chal), notice: 'Hit was successfully destroyed.' }
+      format.html { redirect_to @chal, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,6 +76,7 @@ class HitsController < ApplicationController
       params.require(:hit).permit(:text, :user_id, :chal_id, :p_id)
     end
     def require_same_user
+      @chal = Chal.find(params[:chal_id])
 			unless current_user == @chal.user or current_user.admin?
 				flash[:danger] = "You can only edit your delete your own articles"
 				redirect_to chals_path

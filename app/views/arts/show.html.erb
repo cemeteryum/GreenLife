@@ -1,11 +1,11 @@
 <div class = "col-md-8">
   
-  <div class = "show_header">
+  <div class = "art_show_header">
     
     <!-- Title and Article controlls -->
-    <div class = "show_title">
+    <div class = "art_show_title">
       <%= @art.title %> 
-      <div class = "art_control" style = "margin-right: 20px; margin-top: 0px">
+      <div class = "edit_delete_control">
         <% if logged_in? && (current_user == @art.user || current_user.admin?) %>
               <%= link_to edit_art_path(@art) do %>
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -16,31 +16,34 @@
         <% end %>
       </div>
     </div>
-    
-    <!-- Article Info -->
-    <div class = "show_info">
-      <div class = "tile_author">
-        	by <b> <%= @art.user.username %> </b>
-      </div>
-      <div class = "show_comms">
-          <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= @art.comments %></span>
-      </div>
-      <div class = "show_date">
-          <%= time_ago_in_words(@art.created_at) %> ago
-      </div>
-      <div class = "show_cat">
-          <%= @art.cat.name %> 
-      </div>
-    </div>
-    
   </div>
 
   
   <!-- Implementeaza imagine pentru fiecare articol -->
   <% pth = image_path("Title.jpg") %>   
-  <div style="background: url(<%= pth %>) center center; background-size: cover; width: 100%; height: 300px"></div>
+  <div class = "add_shadow" style="background: url(<%= pth %>) center center; background-size: cover; width: 100%; height: 300px"></div>
   
-  <div class = "show_content">
+  <!-- Article Info -->
+  <div class = "art_show_info">
+    
+    <%= link_to @art.cat do %>
+      <div class = "art_show_cat add_hover">
+          <%= @art.cat.name %> 
+      </div>
+    <% end%>
+    <div class = "art_show_author">
+      	by <b> <%= @art.user.username %> </b>
+    </div>
+    <div class = "art_show_date">
+        <%= time_ago_in_words(@art.created_at) %> ago
+    </div>
+    <div class = "art_show_comms">
+        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= @art.comments %></span>
+    </div>
+    
+  </div>
+  
+  <div class = "art_show_content">
     <%= @art.description %>
   </div>
   

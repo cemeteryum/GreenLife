@@ -32,7 +32,7 @@ class ComsController < ApplicationController
     @com.art = @art
     respond_to do |format|
       if @com.save
-        format.html { redirect_to @art, notice: 'Com was successfully created.' }
+        format.html { redirect_to @art, :flash => { :success => "Comment was successfully added." } }
         format.json { render :show, status: :created, location: @com }
       else
         format.html { redirect_to @art, :flash => { :danger => "Text must not be blank" } }
@@ -60,7 +60,7 @@ class ComsController < ApplicationController
   def destroy
     @com.destroy
     respond_to do |format|
-      format.html { redirect_to arts_url(@art), notice: 'Com was successfully destroyed.' }
+      format.html { redirect_to @art, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -76,9 +76,10 @@ class ComsController < ApplicationController
       params.require(:com).permit(:text, :user_id, :art_id, :p_id)
     end
     def require_same_user
-			unless current_user == @chal.user or current_user.admin?
+      @art = Art.find(params[:art_id])
+			unless current_user == @art.user or current_user.admin?
 				flash[:danger] = "You can only edit your delete your own articles"
-				redirect_to chals_path
+				redirect_to arts_path
 			end
     end
     def logged_in_user
