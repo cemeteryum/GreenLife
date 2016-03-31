@@ -75,7 +75,7 @@ class TreatsController < ApplicationController
       flash[:success] = "Your selection was successful"
       redirect_to :back
     else
-      flash[:danger] = "Your can only like/dislike once"
+      flash[:danger] = "Your can only like/dislike once per treat"
       redirect_to :back
     end
   end

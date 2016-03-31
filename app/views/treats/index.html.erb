@@ -92,7 +92,7 @@
         			by <b> <%= treat.user.username %> </b>
       		  </div>
       		  
-      		  <div class = "when_treat"> 12 March </div>
+      		  <div class = "when_treat"> <%= treat.created_at.to_formatted_s(:short) %> </div>
 
     				<div class = "comments_treat"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= treat.comments %></span> </div>
 

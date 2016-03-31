@@ -2,6 +2,7 @@ class ArtsController < ApplicationController
   before_action :set_art, only: [:show, :edit, :update, :destroy]
   before_action :logged_in_user, only: [:new, :edit, :update, :destroy, :like]
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :tags1to5, only: [:create,:edit, :update]
 
   # GET /arts
   # GET /arts.json
@@ -34,6 +35,7 @@ class ArtsController < ApplicationController
   def create
     @art = Art.new(art_params)
     @art.user = current_user
+    
     respond_to do |format|
       if @art.save
         format.html { redirect_to @art, :flash => { :success => "Article was successfully created." } }
@@ -76,7 +78,7 @@ class ArtsController < ApplicationController
       flash[:success] = "Your selection was successful"
       redirect_to :back
     else
-      flash[:danger] = "Your can only like/dislike once"
+      flash[:danger] = "Your can only like/dislike once per article"
       redirect_to :back
     end
   end
@@ -101,6 +103,17 @@ class ArtsController < ApplicationController
       unless logged_in?
         flash[:danger] = "Please log in."
         redirect_to login_url
+      end
+    end
+    def tags1to5
+      @art = Art.new(art_params)
+      if @art.tag_ids.size > 5
+      flash[:danger] = "Maximum 5 tags please"
+        render :new
+      end
+      if @art.tag_ids.size < 1
+        flash[:danger] = "Minimum one tag please"
+        render :new
       end
     end
 end

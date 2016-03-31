@@ -61,9 +61,9 @@
     			
     			 <!-- Article Tags -->
         		<div class = "tile_tags">
-        		  <% art.tags.each do |tag| %>
+        		  <% art.arttags.each do |x| %>
           		  <div class = "tile_tag">
-          		    <i>Tag1</i>
+          		    <i><%= x.tag.name %></i>
           		  </div>
         		  <% end %>
         		</div>
@@ -90,7 +90,7 @@
     				</div>
   				<% end %>
   				<div class = "comments"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= art.comments %></span> </div>
-  				<div class = "when"> 12 March </div>
+  				<div class = "when">  <%= art.created_at.to_formatted_s(:short) %>  </div>
   				<%= link_to art do %>
   				  <div class = "read_more add_hover" style="background: url(<%= rd %>) center no-repeat; background-size: 100% 100%;"></div>			
   			  <% end%>

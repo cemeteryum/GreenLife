@@ -18,17 +18,17 @@
 			by <b> <%= @chal.user.username %> </b>
 	  </div>
 	  
-	  <div class = "when_treat"> 12 March </div>
+	  <div class = "when_treat"> <%= @chal.created_at.to_formatted_s(:short) %> </div>
 
 		<div class = "comments_treat"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> <%= @chal.comments %></span> </div>
 
-		<%= link_to like_treat_path(@chal, like: true), method: :post do %>
+		<%= link_to like_chal_path(@chal, like: true), method: :post do %>
 			<div class = "like_treat add_hover">
           <i class="glyphicon glyphicon-thumbs-up"></i>
         <%= @chal.thumb_up_total %> 
       </div>
     <% end %>
-    <%= link_to like_treat_path(@chal, like: false), method: :post do %>
+    <%= link_to like_chal_path(@chal, like: false), method: :post do %>
 			<div class = "dislike_treat add_hover">
           <i class="glyphicon glyphicon-thumbs-down"></i>
         <%= @chal.thumb_dw_total %>
@@ -101,7 +101,7 @@
             </div>                
             
               <% if logged_in? && (current_user == com.user || current_user.admin?) %>
-                <%= link_to [com.treat, com], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <%= link_to [com.chal, com], method: :delete, data: { confirm: 'Are you sure?' } do %>
                   <span class="glyphicon glyphicon-remove pull-right tmp_fx" aria-hidden="true"></span>
                 <% end %>
               <% end %>
@@ -124,7 +124,7 @@
                 </span>
                 <!-- Add reply section -->
                 <div class = "tmp_relative collapse" id="reply<%= com.id %>"> <!-- For relative position of the add button -->
-                  <%= form_for([@treat, @treat.reps.build]) do |f| %>
+                  <%= form_for([@chal, @chal.hits.build]) do |f| %>
                       <%= f.hidden_field :p_id, :value => com.id %>
                       <div class = "your_comment">
                         <label for="comment">YOUR COMMENT</label>
@@ -159,7 +159,7 @@
                       </div>
                       
                       <% if logged_in? && (current_user == com.user || current_user.admin?) %>
-                        <%= link_to [rep.treat, rep], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                        <%= link_to [rep.chal, rep], method: :delete, data: { confirm: 'Are you sure?' } do %>
                           <span class="glyphicon glyphicon-remove pull-right" aria-hidden="true"></span>
                         <% end %>
                       <% end %>
