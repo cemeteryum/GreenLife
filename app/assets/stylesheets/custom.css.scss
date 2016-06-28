@@ -7,26 +7,33 @@
 
 /* Variables */
 :root {
-    --tiles-text-color: black;   /* General text color */
-    --tiles-bg-color: white;     /* Tile background color*/ 
-    --general-bg-color: white; /* General background for text color */
-    --corner-size: 10px;         /* General corner rowndness */
-    --link-visited-color: silver;/* General visited link color*/
-    --link-hover-color: #afd330; /* General hover link color*/
+    --tiles-text-color: black;           /* General text color                 */
+    --tiles-bg-color: white;             /* General tile background color      */ 
+    --general-bg-color: white;           /* General background for text color  */
+    --corner-size: 10px;                 /* General corner rowndness           */
+    --link-visited-color: silver;        /* General visited link color         */
+    --link-hover-color: #afd330;         /* General hover link color           */
+    
+    --green-vivid-color: #aed130;        // Green with high saturation
+    --green-light-color: #bad55e;        // Green with high brightness
+    --bright-black-color: #1d1d1d;       // Black with high brightness
+    
+    --border-color: #1d1d1d;             // Used in add border effect
 }
 
 /* Effects */
+
 .add_shadow {
-    -webkit-box-shadow: rgba(0,0,0,.6) 6px 8px 8px;
-    -moz-box-shadow: rgba(0,0,0,.6) 6px 8px 8px;
-    box-shadow: rgba(0,0,0,.6) 6px 8px 8px;
-}
+    -webkit-box-shadow: rgba(0,0,0,.3) 3px 4px 4px;
+    -moz-box-shadow: rgba(0,0,0,.3) 3px 4px 4px;
+    box-shadow: rgba(0,0,0,.3) 3px 4px 4px;
+} // Adds black shadow
 
 .add_hover:hover {
     -moz-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
     -webkit-box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
     box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.3);
-}
+} // Adds hovering effect
 
 .add_link{
     float: right;
@@ -41,7 +48,36 @@
 }
 .add_link a:visited {
     color: white;
-}
+} // Transforms in to link lookalike
+
+.add_border {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--border-color);
+} // Adds border
+
+.add_border_small {
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 3px;
+    border-color: silver;
+} // Adds border
+
+.add_border_shadow {
+    border-style: solid;
+    border-color: red;
+    border-bottom: 10px;
+
+} // Adds border
+
+.add_shadow_border {
+    -webkit-box-shadow: rgba(0,0,0,.3) 3px 4px 4px;
+    -moz-box-shadow: rgba(0,0,0,.3) 3px 4px 4px;
+    box-shadow: rgba(0,0,0,.3) 3px 4px 4px;
+    border-radius: 3px;
+    overflow: hidden;
+    
+} // Adds black shadow
 
 /* General styling */
 
@@ -53,8 +89,8 @@
     letter-spacing: -1px;
     font-weight: bold;
     font-size: 20px;
- /* border-top-left-radius: var(--corner-size); */
- /* border-top-right-radius: var(--corner-size); */
+ // border-top-left-radius: var(--corner-size);
+ // border-top-right-radius: var(--corner-size);
 }
 
 .location_name{
@@ -92,18 +128,6 @@
   width: 360px;
 }
 
-.types { 
-    color: white; 
-    background-color: black; 
-    overflow: auto; 
-    min-width: 100%;
-    padding-left: 200;
-}
-
-.art_control{
-    float: right;
-    margin: 10px;
-}
 
 .art_container{
     padding: 10px;    
@@ -180,7 +204,12 @@
 a {
     
   text-decoration: none;
-  color: silver;
+  color: black;
+  
+  &:link{
+    color: var(--link-visited-color);
+    text-decoration: none;
+  }
 
   &:visited {
     color: var(--link-visited-color);
@@ -191,8 +220,9 @@ a {
     color: var(--link-hover-color);
     text-decoration: none;
   }
+  
   &:active{
-    color:black;
+    color: black;
     text-decoration: none;
   }
 }
@@ -223,7 +253,6 @@ a {
 }
 
 .tempHeight{
-    
     height: 135px;
 }
 
